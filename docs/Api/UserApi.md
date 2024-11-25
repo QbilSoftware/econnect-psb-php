@@ -1,4 +1,4 @@
-# EConnectPsb\UserApi
+# EConnect\Psb\UserApi
 
 All URIs are relative to http://localhost, except if the operation defines another base path.
 
@@ -15,7 +15,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 ## `addOrUpdateUser()`
 
 ```php
-addOrUpdateUser($user): \EConnectPsb\Model\User
+addOrUpdateUser($user): \EConnect\Psb\Model\User
 ```
 
 Add or update users.
@@ -30,21 +30,21 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\UserApi(
+$apiInstance = new EConnect\Psb\Api\UserApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$user = new \EConnectPsb\Model\User(); // \EConnectPsb\Model\User | The user that will be added or updated.
+$user = new \EConnect\Psb\Model\User(); // \EConnect\Psb\Model\User | The user that will be added or updated.
 
 try {
     $result = $apiInstance->addOrUpdateUser($user);
@@ -58,11 +58,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **user** | [**\EConnectPsb\Model\User**](../Model/User.md)| The user that will be added or updated. | [optional] |
+| **user** | [**\EConnect\Psb\Model\User**](../Model/User.md)| The user that will be added or updated. | [optional] |
 
 ### Return type
 
-[**\EConnectPsb\Model\User**](../Model/User.md)
+[**\EConnect\Psb\Model\User**](../Model/User.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ try {
 ## `addOrUpdateUserParty()`
 
 ```php
-addOrUpdateUserParty($name, $user_party): \EConnectPsb\Model\UserParty
+addOrUpdateUserParty($name, $user_party): \EConnect\Psb\Model\UserParty
 ```
 
 Add or update user's party.
@@ -95,22 +95,22 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\UserApi(
+$apiInstance = new EConnect\Psb\Api\UserApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $name = 'name_example'; // string
-$user_party = new \EConnectPsb\Model\UserParty(); // \EConnectPsb\Model\UserParty
+$user_party = new \EConnect\Psb\Model\UserParty(); // \EConnect\Psb\Model\UserParty
 
 try {
     $result = $apiInstance->addOrUpdateUserParty($name, $user_party);
@@ -125,11 +125,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **name** | **string**|  | |
-| **user_party** | [**\EConnectPsb\Model\UserParty**](../Model/UserParty.md)|  | |
+| **user_party** | [**\EConnect\Psb\Model\UserParty**](../Model/UserParty.md)|  | |
 
 ### Return type
 
-[**\EConnectPsb\Model\UserParty**](../Model/UserParty.md)
+[**\EConnect\Psb\Model\UserParty**](../Model/UserParty.md)
 
 ### Authorization
 
@@ -162,15 +162,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\UserApi(
+$apiInstance = new EConnect\Psb\Api\UserApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -226,15 +226,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\UserApi(
+$apiInstance = new EConnect\Psb\Api\UserApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -277,7 +277,7 @@ void (empty response body)
 ## `getUserParties()`
 
 ```php
-getUserParties($name): \EConnectPsb\Model\UserParty[]
+getUserParties($name): \EConnect\Psb\Model\UserParty[]
 ```
 
 Get user's parties.
@@ -292,15 +292,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\UserApi(
+$apiInstance = new EConnect\Psb\Api\UserApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -324,7 +324,7 @@ try {
 
 ### Return type
 
-[**\EConnectPsb\Model\UserParty[]**](../Model/UserParty.md)
+[**\EConnect\Psb\Model\UserParty[]**](../Model/UserParty.md)
 
 ### Authorization
 
@@ -342,7 +342,7 @@ try {
 ## `getUsers()`
 
 ```php
-getUsers(): \EConnectPsb\Model\User[]
+getUsers(): \EConnect\Psb\Model\User[]
 ```
 
 List users.
@@ -357,15 +357,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\UserApi(
+$apiInstance = new EConnect\Psb\Api\UserApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -386,7 +386,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\EConnectPsb\Model\User[]**](../Model/User.md)
+[**\EConnect\Psb\Model\User[]**](../Model/User.md)
 
 ### Authorization
 

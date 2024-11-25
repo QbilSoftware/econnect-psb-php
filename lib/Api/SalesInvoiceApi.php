@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Api;
+namespace EConnect\Psb\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use EConnectPsb\ApiException;
-use EConnectPsb\Configuration;
-use EConnectPsb\HeaderSelector;
-use EConnectPsb\ObjectSerializer;
+use EConnect\Psb\ApiException;
+use EConnect\Psb\Configuration;
+use EConnect\Psb\HeaderSelector;
+use EConnect\Psb\ObjectSerializer;
 
 /**
  * SalesInvoiceApi Class Doc Comment
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -141,9 +141,9 @@ class SalesInvoiceApi
      * @param  string $document_id The service bus documentId. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSalesInvoiceStatuses'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return |\EConnectPsb\Model\DocumentStatus[]
+     * @return |\EConnect\Psb\Model\DocumentStatus[]
      */
     public function getSalesInvoiceStatuses($party_id, $document_id, string $contentType = self::contentTypes['getSalesInvoiceStatuses'][0])
     {
@@ -160,9 +160,9 @@ class SalesInvoiceApi
      * @param  string $document_id The service bus documentId. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSalesInvoiceStatuses'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of |\EConnectPsb\Model\DocumentStatus[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\EConnect\Psb\Model\DocumentStatus[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getSalesInvoiceStatusesWithHttpInfo($party_id, $document_id, string $contentType = self::contentTypes['getSalesInvoiceStatuses'][0])
     {
@@ -193,11 +193,11 @@ class SalesInvoiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\DocumentStatus[]' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\DocumentStatus[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\DocumentStatus[]' !== 'string') {
+                        if ('\EConnect\Psb\Model\DocumentStatus[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -215,7 +215,7 @@ class SalesInvoiceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\DocumentStatus[]', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\DocumentStatus[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -234,7 +234,7 @@ class SalesInvoiceApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\DocumentStatus[]';
+            $returnType = '\EConnect\Psb\Model\DocumentStatus[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -267,7 +267,7 @@ class SalesInvoiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\DocumentStatus[]',
+                        '\EConnect\Psb\Model\DocumentStatus[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -313,7 +313,7 @@ class SalesInvoiceApi
      */
     public function getSalesInvoiceStatusesAsyncWithHttpInfo($party_id, $document_id, string $contentType = self::contentTypes['getSalesInvoiceStatuses'][0])
     {
-        $returnType = '\EConnectPsb\Model\DocumentStatus[]';
+        $returnType = '\EConnect\Psb\Model\DocumentStatus[]';
         $request = $this->getSalesInvoiceStatusesRequest($party_id, $document_id, $contentType);
 
         return $this->client
@@ -485,9 +485,9 @@ class SalesInvoiceApi
      * @param  string $preferred_document_type_id The source or preferred documentTypeId to match with and to determine the partyId format. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryRecipientPartyForSalesInvoice'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \EConnectPsb\Model\LookupParty
+     * @return \EConnect\Psb\Model\LookupParty
      */
     public function queryRecipientPartyForSalesInvoice($party_id, $request_body, $preferred_document_type_id = null, string $contentType = self::contentTypes['queryRecipientPartyForSalesInvoice'][0])
     {
@@ -505,9 +505,9 @@ class SalesInvoiceApi
      * @param  string $preferred_document_type_id The source or preferred documentTypeId to match with and to determine the partyId format. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['queryRecipientPartyForSalesInvoice'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \EConnectPsb\Model\LookupParty, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \EConnect\Psb\Model\LookupParty, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryRecipientPartyForSalesInvoiceWithHttpInfo($party_id, $request_body, $preferred_document_type_id = null, string $contentType = self::contentTypes['queryRecipientPartyForSalesInvoice'][0])
     {
@@ -538,11 +538,11 @@ class SalesInvoiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\LookupParty' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\LookupParty' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\LookupParty' !== 'string') {
+                        if ('\EConnect\Psb\Model\LookupParty' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -560,7 +560,7 @@ class SalesInvoiceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\LookupParty', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\LookupParty', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -579,7 +579,7 @@ class SalesInvoiceApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\LookupParty';
+            $returnType = '\EConnect\Psb\Model\LookupParty';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -612,7 +612,7 @@ class SalesInvoiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\LookupParty',
+                        '\EConnect\Psb\Model\LookupParty',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -660,7 +660,7 @@ class SalesInvoiceApi
      */
     public function queryRecipientPartyForSalesInvoiceAsyncWithHttpInfo($party_id, $request_body, $preferred_document_type_id = null, string $contentType = self::contentTypes['queryRecipientPartyForSalesInvoice'][0])
     {
-        $returnType = '\EConnectPsb\Model\LookupParty';
+        $returnType = '\EConnect\Psb\Model\LookupParty';
         $request = $this->queryRecipientPartyForSalesInvoiceRequest($party_id, $request_body, $preferred_document_type_id, $contentType);
 
         return $this->client
@@ -842,9 +842,9 @@ class SalesInvoiceApi
      * @param  string $channel An optional parameter to enforce the use of a delivery channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recognizeSalesInvoice'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return |\EConnectPsb\Model\Document
+     * @return |\EConnect\Psb\Model\Document
      */
     public function recognizeSalesInvoice($party_id, $file, $channel = null, string $contentType = self::contentTypes['recognizeSalesInvoice'][0])
     {
@@ -862,9 +862,9 @@ class SalesInvoiceApi
      * @param  string $channel An optional parameter to enforce the use of a delivery channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recognizeSalesInvoice'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of |\EConnectPsb\Model\Document, HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
      */
     public function recognizeSalesInvoiceWithHttpInfo($party_id, $file, $channel = null, string $contentType = self::contentTypes['recognizeSalesInvoice'][0])
     {
@@ -895,11 +895,11 @@ class SalesInvoiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\Document' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\Document' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\Document' !== 'string') {
+                        if ('\EConnect\Psb\Model\Document' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -917,7 +917,7 @@ class SalesInvoiceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\Document', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\Document', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -936,7 +936,7 @@ class SalesInvoiceApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\Document';
+            $returnType = '\EConnect\Psb\Model\Document';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -969,7 +969,7 @@ class SalesInvoiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\Document',
+                        '\EConnect\Psb\Model\Document',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1017,7 +1017,7 @@ class SalesInvoiceApi
      */
     public function recognizeSalesInvoiceAsyncWithHttpInfo($party_id, $file, $channel = null, string $contentType = self::contentTypes['recognizeSalesInvoice'][0])
     {
-        $returnType = '\EConnectPsb\Model\Document';
+        $returnType = '\EConnect\Psb\Model\Document';
         $request = $this->recognizeSalesInvoiceRequest($party_id, $file, $channel, $contentType);
 
         return $this->client
@@ -1202,9 +1202,9 @@ class SalesInvoiceApi
      * @param  string $channel An optional parameter to enforce the use of a delivery channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendSalesInvoice'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return |\EConnectPsb\Model\Document
+     * @return |\EConnect\Psb\Model\Document
      */
     public function sendSalesInvoice($party_id, $file, $receiver_id = null, $channel = null, string $contentType = self::contentTypes['sendSalesInvoice'][0])
     {
@@ -1223,9 +1223,9 @@ class SalesInvoiceApi
      * @param  string $channel An optional parameter to enforce the use of a delivery channel. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendSalesInvoice'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of |\EConnectPsb\Model\Document, HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendSalesInvoiceWithHttpInfo($party_id, $file, $receiver_id = null, $channel = null, string $contentType = self::contentTypes['sendSalesInvoice'][0])
     {
@@ -1256,11 +1256,11 @@ class SalesInvoiceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\Document' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\Document' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\Document' !== 'string') {
+                        if ('\EConnect\Psb\Model\Document' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1278,7 +1278,7 @@ class SalesInvoiceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\Document', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\Document', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1297,7 +1297,7 @@ class SalesInvoiceApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\Document';
+            $returnType = '\EConnect\Psb\Model\Document';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1330,7 +1330,7 @@ class SalesInvoiceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\Document',
+                        '\EConnect\Psb\Model\Document',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1380,7 +1380,7 @@ class SalesInvoiceApi
      */
     public function sendSalesInvoiceAsyncWithHttpInfo($party_id, $file, $receiver_id = null, $channel = null, string $contentType = self::contentTypes['sendSalesInvoice'][0])
     {
-        $returnType = '\EConnectPsb\Model\Document';
+        $returnType = '\EConnect\Psb\Model\Document';
         $request = $this->sendSalesInvoiceRequest($party_id, $file, $receiver_id, $channel, $contentType);
 
         return $this->client

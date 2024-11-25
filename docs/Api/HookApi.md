@@ -1,4 +1,4 @@
-# EConnectPsb\HookApi
+# EConnect\Psb\HookApi
 
 All URIs are relative to http://localhost, except if the operation defines another base path.
 
@@ -16,7 +16,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 ## `getHookConfigs()`
 
 ```php
-getHookConfigs(): \EConnectPsb\Model\Hook[]
+getHookConfigs(): \EConnect\Psb\Model\Hook[]
 ```
 
 Get registered environment hooks.
@@ -31,15 +31,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\HookApi(
+$apiInstance = new EConnect\Psb\Api\HookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\EConnectPsb\Model\Hook[]**](../Model/Hook.md)
+[**\EConnect\Psb\Model\Hook[]**](../Model/Hook.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ This endpoint does not need any parameter.
 ## `getHooks()`
 
 ```php
-getHooks($party_id): \EConnectPsb\Model\Hook[]
+getHooks($party_id): \EConnect\Psb\Model\Hook[]
 ```
 
 Get registered hooks.
@@ -93,15 +93,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\HookApi(
+$apiInstance = new EConnect\Psb\Api\HookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -125,7 +125,7 @@ try {
 
 ### Return type
 
-[**\EConnectPsb\Model\Hook[]**](../Model/Hook.md)
+[**\EConnect\Psb\Model\Hook[]**](../Model/Hook.md)
 
 ### Authorization
 
@@ -158,15 +158,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\HookApi(
+$apiInstance = new EConnect\Psb\Api\HookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -207,7 +207,7 @@ void (empty response body)
 ## `sendHookPing()`
 
 ```php
-sendHookPing($party_id): \EConnectPsb\Model\Document
+sendHookPing($party_id): \EConnect\Psb\Model\Document
 ```
 
 Send ping to hook(s).
@@ -222,15 +222,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\HookApi(
+$apiInstance = new EConnect\Psb\Api\HookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -254,7 +254,7 @@ try {
 
 ### Return type
 
-[**\EConnectPsb\Model\Document**](../Model/Document.md)
+[**\EConnect\Psb\Model\Document**](../Model/Document.md)
 
 ### Authorization
 
@@ -272,7 +272,7 @@ try {
 ## `setHookConfig()`
 
 ```php
-setHookConfig($hook): \EConnectPsb\Model\Hook
+setHookConfig($hook): \EConnect\Psb\Model\Hook
 ```
 
 Add or update environment hook.
@@ -287,21 +287,21 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\HookApi(
+$apiInstance = new EConnect\Psb\Api\HookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$hook = new \EConnectPsb\Model\Hook(); // \EConnectPsb\Model\Hook | The hook that will define the action and trigger.
+$hook = new \EConnect\Psb\Model\Hook(); // \EConnect\Psb\Model\Hook | The hook that will define the action and trigger.
 
 try {
     $result = $apiInstance->setHookConfig($hook);
@@ -315,11 +315,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hook** | [**\EConnectPsb\Model\Hook**](../Model/Hook.md)| The hook that will define the action and trigger. | |
+| **hook** | [**\EConnect\Psb\Model\Hook**](../Model/Hook.md)| The hook that will define the action and trigger. | |
 
 ### Return type
 
-[**\EConnectPsb\Model\Hook**](../Model/Hook.md)
+[**\EConnect\Psb\Model\Hook**](../Model/Hook.md)
 
 ### Authorization
 
@@ -337,7 +337,7 @@ try {
 ## `subscribe()`
 
 ```php
-subscribe($party_id, $hook): \EConnectPsb\Model\Hook
+subscribe($party_id, $hook): \EConnect\Psb\Model\Hook
 ```
 
 Add or update hook.
@@ -352,22 +352,22 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\HookApi(
+$apiInstance = new EConnect\Psb\Api\HookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $party_id = 'party_id_example'; // string | The partyId for the hook.
-$hook = new \EConnectPsb\Model\Hook(); // \EConnectPsb\Model\Hook | The hook that will define the action and trigger.
+$hook = new \EConnect\Psb\Model\Hook(); // \EConnect\Psb\Model\Hook | The hook that will define the action and trigger.
 
 try {
     $result = $apiInstance->subscribe($party_id, $hook);
@@ -382,11 +382,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **party_id** | **string**| The partyId for the hook. | |
-| **hook** | [**\EConnectPsb\Model\Hook**](../Model/Hook.md)| The hook that will define the action and trigger. | |
+| **hook** | [**\EConnect\Psb\Model\Hook**](../Model/Hook.md)| The hook that will define the action and trigger. | |
 
 ### Return type
 
-[**\EConnectPsb\Model\Hook**](../Model/Hook.md)
+[**\EConnect\Psb\Model\Hook**](../Model/Hook.md)
 
 ### Authorization
 
@@ -419,15 +419,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\HookApi(
+$apiInstance = new EConnect\Psb\Api\HookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),

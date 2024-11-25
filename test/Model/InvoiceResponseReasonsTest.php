@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace EConnectPsb\Test\Model;
+namespace EConnect\Psb\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -36,7 +36,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description Depending on the status code, a clarification may be needed to state the buyer’s reason for the status.                [NON] No Issue. Indicates that receiver of the documents sends the message just to update the status and there are no problems with document processing.    [REF] References incorrect. Indicates that the received document did not contain references as required by the receiver for correctly routing the document for approval or processing.    [LEG] Legal information incorrect. Information in the received document is not according to legal requirements.    [REC] Receiver unknown. The party to which the document is addressed is not known.    [QUA] Item quality insufficient. Unacceptable or incorrect quality.    [DEL] Delivery issues. Delivery proposed or provided is not acceptable.    [PRI] Prices incorrect. Prices not according to previous expectation.    [QTY] Quantity incorrect. Quantity not according to previous expectation.     [ITM] Items incorrect. Items not according to previous expectation.    [PAY] Payment terms incorrect. Payment terms not according to previous expectation.     [UNR] Not recognized. Commercial transaction not recognized.    [FIN] Finance incorrect. Finance terms not according to previous expectation.    [PPD] Partially Paid. Payment is partially but not fully paid.     [OTH] Other. Reason for status is not defined by code.                  Status Clarification Reason list:  ./misc/codeList.html#status-clarification-reason
- * @package     EConnectPsb
+ * @package     EConnect\Psb
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

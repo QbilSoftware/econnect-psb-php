@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,15 +27,15 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Model;
-use \EConnectPsb\ObjectSerializer;
+namespace EConnect\Psb\Model;
+use \EConnect\Psb\ObjectSerializer;
 
 /**
  * OrderResponseCodes Class Doc Comment
  *
  * @category Class
  * @description Status codes used as Order Response Codes    [AB] Acknowledge. The Order has been received. The Order has not yet been processed. No lines should be sent. An additional Order Response Advanced should be sent after processing, to accept, reject or accept with changes.  [RE] Rejected. The Order is rejected. No lines should be sent.  [AP] Accepted. The Order is accepted without amendment. No lines should be sent.  [CA] Conditionally Accepted. The Order is accepted with amendment on line level. All lines must be sent.  Invoice response codes list:  ./misc/codeList.html#order-response-codes
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

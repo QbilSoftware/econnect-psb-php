@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Model;
+namespace EConnect\Psb\Model;
 
 use \ArrayAccess;
-use \EConnectPsb\ObjectSerializer;
+use \EConnect\Psb\ObjectSerializer;
 
 /**
  * PartyPagedResult Class Doc Comment
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class PartyPagedResult implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'continuation_token' => 'mixed',
-        'items' => '\EConnectPsb\Model\Party[]'
+        'items' => '\EConnect\Psb\Model\Party[]'
     ];
 
     /**
@@ -334,7 +334,7 @@ class PartyPagedResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return \EConnectPsb\Model\Party[]|null
+     * @return \EConnect\Psb\Model\Party[]|null
      */
     public function getItems()
     {
@@ -344,7 +344,7 @@ class PartyPagedResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets items
      *
-     * @param \EConnectPsb\Model\Party[]|null $items items
+     * @param \EConnect\Psb\Model\Party[]|null $items items
      *
      * @return self
      */

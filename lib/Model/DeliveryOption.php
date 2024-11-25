@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Model;
+namespace EConnect\Psb\Model;
 
 use \ArrayAccess;
-use \EConnectPsb\ObjectSerializer;
+use \EConnect\Psb\ObjectSerializer;
 
 /**
  * DeliveryOption Class Doc Comment
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class DeliveryOption implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'party_id' => 'string',
         'document_type_id' => 'string',
-        'process_id' => '\EConnectPsb\Model\ProcessId',
-        'family' => '\EConnectPsb\Model\DocumentFamily',
-        'protocol' => '\EConnectPsb\Model\TransportProtocol',
+        'process_id' => '\EConnect\Psb\Model\ProcessId',
+        'family' => '\EConnect\Psb\Model\DocumentFamily',
+        'protocol' => '\EConnect\Psb\Model\TransportProtocol',
         'url' => 'string',
         'access_point' => 'string',
         'certificate' => 'string'
@@ -403,7 +403,7 @@ class DeliveryOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets process_id
      *
-     * @return \EConnectPsb\Model\ProcessId|null
+     * @return \EConnect\Psb\Model\ProcessId|null
      */
     public function getProcessId()
     {
@@ -413,7 +413,7 @@ class DeliveryOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets process_id
      *
-     * @param \EConnectPsb\Model\ProcessId|null $process_id process_id
+     * @param \EConnect\Psb\Model\ProcessId|null $process_id process_id
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class DeliveryOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets family
      *
-     * @return \EConnectPsb\Model\DocumentFamily|null
+     * @return \EConnect\Psb\Model\DocumentFamily|null
      */
     public function getFamily()
     {
@@ -440,7 +440,7 @@ class DeliveryOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets family
      *
-     * @param \EConnectPsb\Model\DocumentFamily|null $family family
+     * @param \EConnect\Psb\Model\DocumentFamily|null $family family
      *
      * @return self
      */
@@ -457,7 +457,7 @@ class DeliveryOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets protocol
      *
-     * @return \EConnectPsb\Model\TransportProtocol|null
+     * @return \EConnect\Psb\Model\TransportProtocol|null
      */
     public function getProtocol()
     {
@@ -467,7 +467,7 @@ class DeliveryOption implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets protocol
      *
-     * @param \EConnectPsb\Model\TransportProtocol|null $protocol protocol
+     * @param \EConnect\Psb\Model\TransportProtocol|null $protocol protocol
      *
      * @return self
      */

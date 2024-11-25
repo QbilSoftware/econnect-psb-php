@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Api;
+namespace EConnect\Psb\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use EConnectPsb\ApiException;
-use EConnectPsb\Configuration;
-use EConnectPsb\HeaderSelector;
-use EConnectPsb\ObjectSerializer;
+use EConnect\Psb\ApiException;
+use EConnect\Psb\Configuration;
+use EConnect\Psb\HeaderSelector;
+use EConnect\Psb\ObjectSerializer;
 
 /**
  * UserApi Class Doc Comment
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -143,12 +143,12 @@ class UserApi
      *
      * Add or update users.
      *
-     * @param  \EConnectPsb\Model\User $user The user that will be added or updated. (optional)
+     * @param  \EConnect\Psb\Model\User $user The user that will be added or updated. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addOrUpdateUser'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \EConnectPsb\Model\User
+     * @return \EConnect\Psb\Model\User
      */
     public function addOrUpdateUser($user = null, string $contentType = self::contentTypes['addOrUpdateUser'][0])
     {
@@ -161,12 +161,12 @@ class UserApi
      *
      * Add or update users.
      *
-     * @param  \EConnectPsb\Model\User $user The user that will be added or updated. (optional)
+     * @param  \EConnect\Psb\Model\User $user The user that will be added or updated. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addOrUpdateUser'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \EConnectPsb\Model\User, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \EConnect\Psb\Model\User, HTTP status code, HTTP response headers (array of strings)
      */
     public function addOrUpdateUserWithHttpInfo($user = null, string $contentType = self::contentTypes['addOrUpdateUser'][0])
     {
@@ -197,11 +197,11 @@ class UserApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\User' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\User' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\User' !== 'string') {
+                        if ('\EConnect\Psb\Model\User' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -219,7 +219,7 @@ class UserApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\User', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\User', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -238,7 +238,7 @@ class UserApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\User';
+            $returnType = '\EConnect\Psb\Model\User';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -271,7 +271,7 @@ class UserApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\User',
+                        '\EConnect\Psb\Model\User',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -286,7 +286,7 @@ class UserApi
      *
      * Add or update users.
      *
-     * @param  \EConnectPsb\Model\User $user The user that will be added or updated. (optional)
+     * @param  \EConnect\Psb\Model\User $user The user that will be added or updated. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addOrUpdateUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -307,7 +307,7 @@ class UserApi
      *
      * Add or update users.
      *
-     * @param  \EConnectPsb\Model\User $user The user that will be added or updated. (optional)
+     * @param  \EConnect\Psb\Model\User $user The user that will be added or updated. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addOrUpdateUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -315,7 +315,7 @@ class UserApi
      */
     public function addOrUpdateUserAsyncWithHttpInfo($user = null, string $contentType = self::contentTypes['addOrUpdateUser'][0])
     {
-        $returnType = '\EConnectPsb\Model\User';
+        $returnType = '\EConnect\Psb\Model\User';
         $request = $this->addOrUpdateUserRequest($user, $contentType);
 
         return $this->client
@@ -357,7 +357,7 @@ class UserApi
     /**
      * Create request for operation 'addOrUpdateUser'
      *
-     * @param  \EConnectPsb\Model\User $user The user that will be added or updated. (optional)
+     * @param  \EConnect\Psb\Model\User $user The user that will be added or updated. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addOrUpdateUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -454,12 +454,12 @@ class UserApi
      * Add or update user&#39;s party.
      *
      * @param  string $name name (required)
-     * @param  \EConnectPsb\Model\UserParty $user_party user_party (required)
+     * @param  \EConnect\Psb\Model\UserParty $user_party user_party (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addOrUpdateUserParty'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \EConnectPsb\Model\UserParty
+     * @return \EConnect\Psb\Model\UserParty
      */
     public function addOrUpdateUserParty($name, $user_party, string $contentType = self::contentTypes['addOrUpdateUserParty'][0])
     {
@@ -473,12 +473,12 @@ class UserApi
      * Add or update user&#39;s party.
      *
      * @param  string $name (required)
-     * @param  \EConnectPsb\Model\UserParty $user_party (required)
+     * @param  \EConnect\Psb\Model\UserParty $user_party (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addOrUpdateUserParty'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \EConnectPsb\Model\UserParty, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \EConnect\Psb\Model\UserParty, HTTP status code, HTTP response headers (array of strings)
      */
     public function addOrUpdateUserPartyWithHttpInfo($name, $user_party, string $contentType = self::contentTypes['addOrUpdateUserParty'][0])
     {
@@ -509,11 +509,11 @@ class UserApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\UserParty' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\UserParty' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\UserParty' !== 'string') {
+                        if ('\EConnect\Psb\Model\UserParty' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -531,7 +531,7 @@ class UserApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\UserParty', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\UserParty', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -550,7 +550,7 @@ class UserApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\UserParty';
+            $returnType = '\EConnect\Psb\Model\UserParty';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -583,7 +583,7 @@ class UserApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\UserParty',
+                        '\EConnect\Psb\Model\UserParty',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -599,7 +599,7 @@ class UserApi
      * Add or update user&#39;s party.
      *
      * @param  string $name (required)
-     * @param  \EConnectPsb\Model\UserParty $user_party (required)
+     * @param  \EConnect\Psb\Model\UserParty $user_party (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addOrUpdateUserParty'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -621,7 +621,7 @@ class UserApi
      * Add or update user&#39;s party.
      *
      * @param  string $name (required)
-     * @param  \EConnectPsb\Model\UserParty $user_party (required)
+     * @param  \EConnect\Psb\Model\UserParty $user_party (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addOrUpdateUserParty'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -629,7 +629,7 @@ class UserApi
      */
     public function addOrUpdateUserPartyAsyncWithHttpInfo($name, $user_party, string $contentType = self::contentTypes['addOrUpdateUserParty'][0])
     {
-        $returnType = '\EConnectPsb\Model\UserParty';
+        $returnType = '\EConnect\Psb\Model\UserParty';
         $request = $this->addOrUpdateUserPartyRequest($name, $user_party, $contentType);
 
         return $this->client
@@ -672,7 +672,7 @@ class UserApi
      * Create request for operation 'addOrUpdateUserParty'
      *
      * @param  string $name (required)
-     * @param  \EConnectPsb\Model\UserParty $user_party (required)
+     * @param  \EConnect\Psb\Model\UserParty $user_party (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addOrUpdateUserParty'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -792,7 +792,7 @@ class UserApi
      * @param  string $name The name for the user. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteUser'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -809,7 +809,7 @@ class UserApi
      * @param  string $name The name for the user. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteUser'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1019,7 +1019,7 @@ class UserApi
      * @param  string $party_id party_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteUserParty'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1037,7 +1037,7 @@ class UserApi
      * @param  string $party_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteUserParty'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1264,9 +1264,9 @@ class UserApi
      * @param  string $name name (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserParties'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \EConnectPsb\Model\UserParty[]
+     * @return \EConnect\Psb\Model\UserParty[]
      */
     public function getUserParties($name, string $contentType = self::contentTypes['getUserParties'][0])
     {
@@ -1282,9 +1282,9 @@ class UserApi
      * @param  string $name (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserParties'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \EConnectPsb\Model\UserParty[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \EConnect\Psb\Model\UserParty[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserPartiesWithHttpInfo($name, string $contentType = self::contentTypes['getUserParties'][0])
     {
@@ -1315,11 +1315,11 @@ class UserApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\UserParty[]' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\UserParty[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\UserParty[]' !== 'string') {
+                        if ('\EConnect\Psb\Model\UserParty[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1337,7 +1337,7 @@ class UserApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\UserParty[]', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\UserParty[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1356,7 +1356,7 @@ class UserApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\UserParty[]';
+            $returnType = '\EConnect\Psb\Model\UserParty[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1389,7 +1389,7 @@ class UserApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\UserParty[]',
+                        '\EConnect\Psb\Model\UserParty[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1433,7 +1433,7 @@ class UserApi
      */
     public function getUserPartiesAsyncWithHttpInfo($name, string $contentType = self::contentTypes['getUserParties'][0])
     {
-        $returnType = '\EConnectPsb\Model\UserParty[]';
+        $returnType = '\EConnect\Psb\Model\UserParty[]';
         $request = $this->getUserPartiesRequest($name, $contentType);
 
         return $this->client
@@ -1580,9 +1580,9 @@ class UserApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsers'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \EConnectPsb\Model\User[]
+     * @return \EConnect\Psb\Model\User[]
      */
     public function getUsers(string $contentType = self::contentTypes['getUsers'][0])
     {
@@ -1597,9 +1597,9 @@ class UserApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsers'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \EConnectPsb\Model\User[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \EConnect\Psb\Model\User[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsersWithHttpInfo(string $contentType = self::contentTypes['getUsers'][0])
     {
@@ -1630,11 +1630,11 @@ class UserApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\User[]' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\User[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\User[]' !== 'string') {
+                        if ('\EConnect\Psb\Model\User[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1652,7 +1652,7 @@ class UserApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\User[]', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\User[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1671,7 +1671,7 @@ class UserApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\User[]';
+            $returnType = '\EConnect\Psb\Model\User[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1704,7 +1704,7 @@ class UserApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\User[]',
+                        '\EConnect\Psb\Model\User[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1746,7 +1746,7 @@ class UserApi
      */
     public function getUsersAsyncWithHttpInfo(string $contentType = self::contentTypes['getUsers'][0])
     {
-        $returnType = '\EConnectPsb\Model\User[]';
+        $returnType = '\EConnect\Psb\Model\User[]';
         $request = $this->getUsersRequest($contentType);
 
         return $this->client

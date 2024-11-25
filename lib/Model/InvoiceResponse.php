@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Model;
+namespace EConnect\Psb\Model;
 
 use \ArrayAccess;
-use \EConnectPsb\ObjectSerializer;
+use \EConnect\Psb\ObjectSerializer;
 
 /**
  * InvoiceResponse Class Doc Comment
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class InvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\EConnectPsb\Model\InvoiceResponseCodes',
-        'reasons' => '\EConnectPsb\Model\InvoiceResponseReasons',
-        'actions' => '\EConnectPsb\Model\InvoiceResponseActions',
+        'status' => '\EConnect\Psb\Model\InvoiceResponseCodes',
+        'reasons' => '\EConnect\Psb\Model\InvoiceResponseReasons',
+        'actions' => '\EConnect\Psb\Model\InvoiceResponseActions',
         'note' => 'string'
     ];
 
@@ -317,7 +317,7 @@ class InvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \EConnectPsb\Model\InvoiceResponseCodes
+     * @return \EConnect\Psb\Model\InvoiceResponseCodes
      */
     public function getStatus()
     {
@@ -327,7 +327,7 @@ class InvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \EConnectPsb\Model\InvoiceResponseCodes $status status
+     * @param \EConnect\Psb\Model\InvoiceResponseCodes $status status
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class InvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets reasons
      *
-     * @return \EConnectPsb\Model\InvoiceResponseReasons|null
+     * @return \EConnect\Psb\Model\InvoiceResponseReasons|null
      */
     public function getReasons()
     {
@@ -354,7 +354,7 @@ class InvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reasons
      *
-     * @param \EConnectPsb\Model\InvoiceResponseReasons|null $reasons reasons
+     * @param \EConnect\Psb\Model\InvoiceResponseReasons|null $reasons reasons
      *
      * @return self
      */
@@ -378,7 +378,7 @@ class InvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets actions
      *
-     * @return \EConnectPsb\Model\InvoiceResponseActions|null
+     * @return \EConnect\Psb\Model\InvoiceResponseActions|null
      */
     public function getActions()
     {
@@ -388,7 +388,7 @@ class InvoiceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets actions
      *
-     * @param \EConnectPsb\Model\InvoiceResponseActions|null $actions actions
+     * @param \EConnect\Psb\Model\InvoiceResponseActions|null $actions actions
      *
      * @return self
      */

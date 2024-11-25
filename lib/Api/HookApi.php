@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Api;
+namespace EConnect\Psb\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use EConnectPsb\ApiException;
-use EConnectPsb\Configuration;
-use EConnectPsb\HeaderSelector;
-use EConnectPsb\ObjectSerializer;
+use EConnect\Psb\ApiException;
+use EConnect\Psb\Configuration;
+use EConnect\Psb\HeaderSelector;
+use EConnect\Psb\ObjectSerializer;
 
 /**
  * HookApi Class Doc Comment
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -148,9 +148,9 @@ class HookApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHookConfigs'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \EConnectPsb\Model\Hook[]
+     * @return \EConnect\Psb\Model\Hook[]
      */
     public function getHookConfigs(string $contentType = self::contentTypes['getHookConfigs'][0])
     {
@@ -165,9 +165,9 @@ class HookApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHookConfigs'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \EConnectPsb\Model\Hook[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \EConnect\Psb\Model\Hook[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getHookConfigsWithHttpInfo(string $contentType = self::contentTypes['getHookConfigs'][0])
     {
@@ -198,11 +198,11 @@ class HookApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\Hook[]' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\Hook[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\Hook[]' !== 'string') {
+                        if ('\EConnect\Psb\Model\Hook[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -220,7 +220,7 @@ class HookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\Hook[]', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\Hook[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -239,7 +239,7 @@ class HookApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\Hook[]';
+            $returnType = '\EConnect\Psb\Model\Hook[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -272,7 +272,7 @@ class HookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\Hook[]',
+                        '\EConnect\Psb\Model\Hook[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -314,7 +314,7 @@ class HookApi
      */
     public function getHookConfigsAsyncWithHttpInfo(string $contentType = self::contentTypes['getHookConfigs'][0])
     {
-        $returnType = '\EConnectPsb\Model\Hook[]';
+        $returnType = '\EConnect\Psb\Model\Hook[]';
         $request = $this->getHookConfigsRequest($contentType);
 
         return $this->client
@@ -446,9 +446,9 @@ class HookApi
      * @param  string $party_id The partyId of the registered hooks. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHooks'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \EConnectPsb\Model\Hook[]
+     * @return \EConnect\Psb\Model\Hook[]
      */
     public function getHooks($party_id, string $contentType = self::contentTypes['getHooks'][0])
     {
@@ -464,9 +464,9 @@ class HookApi
      * @param  string $party_id The partyId of the registered hooks. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getHooks'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \EConnectPsb\Model\Hook[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \EConnect\Psb\Model\Hook[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getHooksWithHttpInfo($party_id, string $contentType = self::contentTypes['getHooks'][0])
     {
@@ -497,11 +497,11 @@ class HookApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\Hook[]' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\Hook[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\Hook[]' !== 'string') {
+                        if ('\EConnect\Psb\Model\Hook[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -519,7 +519,7 @@ class HookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\Hook[]', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\Hook[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -538,7 +538,7 @@ class HookApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\Hook[]';
+            $returnType = '\EConnect\Psb\Model\Hook[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -571,7 +571,7 @@ class HookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\Hook[]',
+                        '\EConnect\Psb\Model\Hook[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -615,7 +615,7 @@ class HookApi
      */
     public function getHooksAsyncWithHttpInfo($party_id, string $contentType = self::contentTypes['getHooks'][0])
     {
-        $returnType = '\EConnectPsb\Model\Hook[]';
+        $returnType = '\EConnect\Psb\Model\Hook[]';
         $request = $this->getHooksRequest($party_id, $contentType);
 
         return $this->client
@@ -766,7 +766,7 @@ class HookApi
      * @param  string $hook_id The hookId that is used as the id in the hook object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeHookConfig'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -783,7 +783,7 @@ class HookApi
      * @param  string $hook_id The hookId that is used as the id in the hook object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeHookConfig'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -998,9 +998,9 @@ class HookApi
      * @param  string $party_id The partyId where the ping must be sent to. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendHookPing'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \EConnectPsb\Model\Document
+     * @return \EConnect\Psb\Model\Document
      */
     public function sendHookPing($party_id, string $contentType = self::contentTypes['sendHookPing'][0])
     {
@@ -1016,9 +1016,9 @@ class HookApi
      * @param  string $party_id The partyId where the ping must be sent to. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendHookPing'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \EConnectPsb\Model\Document, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendHookPingWithHttpInfo($party_id, string $contentType = self::contentTypes['sendHookPing'][0])
     {
@@ -1049,11 +1049,11 @@ class HookApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\Document' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\Document' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\Document' !== 'string') {
+                        if ('\EConnect\Psb\Model\Document' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1071,7 +1071,7 @@ class HookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\Document', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\Document', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1090,7 +1090,7 @@ class HookApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\Document';
+            $returnType = '\EConnect\Psb\Model\Document';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1123,7 +1123,7 @@ class HookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\Document',
+                        '\EConnect\Psb\Model\Document',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1167,7 +1167,7 @@ class HookApi
      */
     public function sendHookPingAsyncWithHttpInfo($party_id, string $contentType = self::contentTypes['sendHookPing'][0])
     {
-        $returnType = '\EConnectPsb\Model\Document';
+        $returnType = '\EConnect\Psb\Model\Document';
         $request = $this->sendHookPingRequest($party_id, $contentType);
 
         return $this->client
@@ -1315,12 +1315,12 @@ class HookApi
      *
      * Add or update environment hook.
      *
-     * @param  \EConnectPsb\Model\Hook $hook The hook that will define the action and trigger. (required)
+     * @param  \EConnect\Psb\Model\Hook $hook The hook that will define the action and trigger. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setHookConfig'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return |\EConnectPsb\Model\Hook
+     * @return |\EConnect\Psb\Model\Hook
      */
     public function setHookConfig($hook, string $contentType = self::contentTypes['setHookConfig'][0])
     {
@@ -1333,12 +1333,12 @@ class HookApi
      *
      * Add or update environment hook.
      *
-     * @param  \EConnectPsb\Model\Hook $hook The hook that will define the action and trigger. (required)
+     * @param  \EConnect\Psb\Model\Hook $hook The hook that will define the action and trigger. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setHookConfig'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of |\EConnectPsb\Model\Hook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\EConnect\Psb\Model\Hook, HTTP status code, HTTP response headers (array of strings)
      */
     public function setHookConfigWithHttpInfo($hook, string $contentType = self::contentTypes['setHookConfig'][0])
     {
@@ -1369,11 +1369,11 @@ class HookApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\Hook' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\Hook' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\Hook' !== 'string') {
+                        if ('\EConnect\Psb\Model\Hook' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1391,7 +1391,7 @@ class HookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\Hook', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\Hook', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1410,7 +1410,7 @@ class HookApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\Hook';
+            $returnType = '\EConnect\Psb\Model\Hook';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1443,7 +1443,7 @@ class HookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\Hook',
+                        '\EConnect\Psb\Model\Hook',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1458,7 +1458,7 @@ class HookApi
      *
      * Add or update environment hook.
      *
-     * @param  \EConnectPsb\Model\Hook $hook The hook that will define the action and trigger. (required)
+     * @param  \EConnect\Psb\Model\Hook $hook The hook that will define the action and trigger. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setHookConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1479,7 +1479,7 @@ class HookApi
      *
      * Add or update environment hook.
      *
-     * @param  \EConnectPsb\Model\Hook $hook The hook that will define the action and trigger. (required)
+     * @param  \EConnect\Psb\Model\Hook $hook The hook that will define the action and trigger. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setHookConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1487,7 +1487,7 @@ class HookApi
      */
     public function setHookConfigAsyncWithHttpInfo($hook, string $contentType = self::contentTypes['setHookConfig'][0])
     {
-        $returnType = '\EConnectPsb\Model\Hook';
+        $returnType = '\EConnect\Psb\Model\Hook';
         $request = $this->setHookConfigRequest($hook, $contentType);
 
         return $this->client
@@ -1529,7 +1529,7 @@ class HookApi
     /**
      * Create request for operation 'setHookConfig'
      *
-     * @param  \EConnectPsb\Model\Hook $hook The hook that will define the action and trigger. (required)
+     * @param  \EConnect\Psb\Model\Hook $hook The hook that will define the action and trigger. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setHookConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1632,12 +1632,12 @@ class HookApi
      * Add or update hook.
      *
      * @param  string $party_id The partyId for the hook. (required)
-     * @param  \EConnectPsb\Model\Hook $hook The hook that will define the action and trigger. (required)
+     * @param  \EConnect\Psb\Model\Hook $hook The hook that will define the action and trigger. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscribe'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return |\EConnectPsb\Model\Hook
+     * @return |\EConnect\Psb\Model\Hook
      */
     public function subscribe($party_id, $hook, string $contentType = self::contentTypes['subscribe'][0])
     {
@@ -1651,12 +1651,12 @@ class HookApi
      * Add or update hook.
      *
      * @param  string $party_id The partyId for the hook. (required)
-     * @param  \EConnectPsb\Model\Hook $hook The hook that will define the action and trigger. (required)
+     * @param  \EConnect\Psb\Model\Hook $hook The hook that will define the action and trigger. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscribe'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of |\EConnectPsb\Model\Hook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\EConnect\Psb\Model\Hook, HTTP status code, HTTP response headers (array of strings)
      */
     public function subscribeWithHttpInfo($party_id, $hook, string $contentType = self::contentTypes['subscribe'][0])
     {
@@ -1687,11 +1687,11 @@ class HookApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\Hook' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\Hook' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\Hook' !== 'string') {
+                        if ('\EConnect\Psb\Model\Hook' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1709,7 +1709,7 @@ class HookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\Hook', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\Hook', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1728,7 +1728,7 @@ class HookApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\Hook';
+            $returnType = '\EConnect\Psb\Model\Hook';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1761,7 +1761,7 @@ class HookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\Hook',
+                        '\EConnect\Psb\Model\Hook',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1777,7 +1777,7 @@ class HookApi
      * Add or update hook.
      *
      * @param  string $party_id The partyId for the hook. (required)
-     * @param  \EConnectPsb\Model\Hook $hook The hook that will define the action and trigger. (required)
+     * @param  \EConnect\Psb\Model\Hook $hook The hook that will define the action and trigger. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscribe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1799,7 +1799,7 @@ class HookApi
      * Add or update hook.
      *
      * @param  string $party_id The partyId for the hook. (required)
-     * @param  \EConnectPsb\Model\Hook $hook The hook that will define the action and trigger. (required)
+     * @param  \EConnect\Psb\Model\Hook $hook The hook that will define the action and trigger. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscribe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1807,7 +1807,7 @@ class HookApi
      */
     public function subscribeAsyncWithHttpInfo($party_id, $hook, string $contentType = self::contentTypes['subscribe'][0])
     {
-        $returnType = '\EConnectPsb\Model\Hook';
+        $returnType = '\EConnect\Psb\Model\Hook';
         $request = $this->subscribeRequest($party_id, $hook, $contentType);
 
         return $this->client
@@ -1850,7 +1850,7 @@ class HookApi
      * Create request for operation 'subscribe'
      *
      * @param  string $party_id The partyId for the hook. (required)
-     * @param  \EConnectPsb\Model\Hook $hook The hook that will define the action and trigger. (required)
+     * @param  \EConnect\Psb\Model\Hook $hook The hook that will define the action and trigger. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscribe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1974,7 +1974,7 @@ class HookApi
      * @param  string $hook_id The hookId that is used as the id in the hook object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unSubscribe'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1992,7 +1992,7 @@ class HookApi
      * @param  string $hook_id The hookId that is used as the id in the hook object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unSubscribe'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */

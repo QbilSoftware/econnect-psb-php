@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace EConnectPsb\Test\Model;
+namespace EConnect\Psb\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -36,7 +36,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description Expectations towards the seller    [NOA] No action required.    [PIN] Provide information. Missing information requested without re-issuing invoice.    [NIN] Issue new invoice. Request to re-issue a corrected invoice.    [CNF] Credit fully. Request to fully cancel the referenced invoice with a credit note.    [CNP] Credit partially. Request to issue partial credit note for corrections only.    [CNA] Credit the amount. Request to repay the amount paid on the invoice.     [OTH] Other. Requested action is not defined by code.                  Status Clarification Action list:  ./misc/codeList.html#status-clarification-action
- * @package     EConnectPsb
+ * @package     EConnect\Psb
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

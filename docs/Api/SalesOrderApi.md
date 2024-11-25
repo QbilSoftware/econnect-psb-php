@@ -1,4 +1,4 @@
-# EConnectPsb\SalesOrderApi
+# EConnect\Psb\SalesOrderApi
 
 All URIs are relative to http://localhost, except if the operation defines another base path.
 
@@ -29,15 +29,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\SalesOrderApi(
+$apiInstance = new EConnect\Psb\Api\SalesOrderApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -95,15 +95,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\SalesOrderApi(
+$apiInstance = new EConnect\Psb\Api\SalesOrderApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -149,7 +149,7 @@ try {
 ## `getSalesOrderStatuses()`
 
 ```php
-getSalesOrderStatuses($party_id, $document_id): \EConnectPsb\Model\DocumentStatus[]
+getSalesOrderStatuses($party_id, $document_id): \EConnect\Psb\Model\DocumentStatus[]
 ```
 
 Get sales order statuses.
@@ -164,15 +164,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\SalesOrderApi(
+$apiInstance = new EConnect\Psb\Api\SalesOrderApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -198,7 +198,7 @@ try {
 
 ### Return type
 
-[**\EConnectPsb\Model\DocumentStatus[]**](../Model/DocumentStatus.md)
+[**\EConnect\Psb\Model\DocumentStatus[]**](../Model/DocumentStatus.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ try {
 ## `queryRecipientPartyForOrderResponse()`
 
 ```php
-queryRecipientPartyForOrderResponse($party_id, $request_body, $preferred_document_type_id): \EConnectPsb\Model\LookupParty
+queryRecipientPartyForOrderResponse($party_id, $request_body, $preferred_document_type_id): \EConnect\Psb\Model\LookupParty
 ```
 
 Lookup the recipient party (buyer/customer) for possible delivery.
@@ -231,15 +231,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\SalesOrderApi(
+$apiInstance = new EConnect\Psb\Api\SalesOrderApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -267,7 +267,7 @@ try {
 
 ### Return type
 
-[**\EConnectPsb\Model\LookupParty**](../Model/LookupParty.md)
+[**\EConnect\Psb\Model\LookupParty**](../Model/LookupParty.md)
 
 ### Authorization
 
@@ -285,7 +285,7 @@ try {
 ## `sendOrderResponse()`
 
 ```php
-sendOrderResponse($party_id, $document_id, $order_response): \EConnectPsb\Model\Document
+sendOrderResponse($party_id, $document_id, $order_response): \EConnect\Psb\Model\Document
 ```
 
 Send order response to let the buyer know the status of the received order.
@@ -300,15 +300,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\SalesOrderApi(
+$apiInstance = new EConnect\Psb\Api\SalesOrderApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -316,7 +316,7 @@ $apiInstance = new EConnectPsb\Api\SalesOrderApi(
 );
 $party_id = 'party_id_example'; // string | Your partyId (seller).
 $document_id = 'document_id_example'; // string | DocumentId that the response is about.
-$order_response = new \EConnectPsb\Model\OrderResponse(); // \EConnectPsb\Model\OrderResponse | Order response message.
+$order_response = new \EConnect\Psb\Model\OrderResponse(); // \EConnect\Psb\Model\OrderResponse | Order response message.
 
 try {
     $result = $apiInstance->sendOrderResponse($party_id, $document_id, $order_response);
@@ -332,11 +332,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **party_id** | **string**| Your partyId (seller). | |
 | **document_id** | **string**| DocumentId that the response is about. | |
-| **order_response** | [**\EConnectPsb\Model\OrderResponse**](../Model/OrderResponse.md)| Order response message. | |
+| **order_response** | [**\EConnect\Psb\Model\OrderResponse**](../Model/OrderResponse.md)| Order response message. | |
 
 ### Return type
 
-[**\EConnectPsb\Model\Document**](../Model/Document.md)
+[**\EConnect\Psb\Model\Document**](../Model/Document.md)
 
 ### Authorization
 

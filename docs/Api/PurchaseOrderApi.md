@@ -1,4 +1,4 @@
-# EConnectPsb\PurchaseOrderApi
+# EConnect\Psb\PurchaseOrderApi
 
 All URIs are relative to http://localhost, except if the operation defines another base path.
 
@@ -13,7 +13,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 ## `apiV1PartyIdPurchaseOrderDocumentIdStatusGet()`
 
 ```php
-apiV1PartyIdPurchaseOrderDocumentIdStatusGet($party_id, $document_id): \EConnectPsb\Model\DocumentStatus[]
+apiV1PartyIdPurchaseOrderDocumentIdStatusGet($party_id, $document_id): \EConnect\Psb\Model\DocumentStatus[]
 ```
 
 Get purchase order statuses.
@@ -28,15 +28,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\PurchaseOrderApi(
+$apiInstance = new EConnect\Psb\Api\PurchaseOrderApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -62,7 +62,7 @@ try {
 
 ### Return type
 
-[**\EConnectPsb\Model\DocumentStatus[]**](../Model/DocumentStatus.md)
+[**\EConnect\Psb\Model\DocumentStatus[]**](../Model/DocumentStatus.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ try {
 ## `apiV1PartyIdPurchaseOrderQueryRecipientPartyPost()`
 
 ```php
-apiV1PartyIdPurchaseOrderQueryRecipientPartyPost($party_id, $request_body, $preferred_document_type_id, $document_family): \EConnectPsb\Model\LookupParty
+apiV1PartyIdPurchaseOrderQueryRecipientPartyPost($party_id, $request_body, $preferred_document_type_id, $document_family): \EConnect\Psb\Model\LookupParty
 ```
 
 Lookup the recipient party (seller) for possible delivery.
@@ -95,15 +95,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\PurchaseOrderApi(
+$apiInstance = new EConnect\Psb\Api\PurchaseOrderApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -112,7 +112,7 @@ $apiInstance = new EConnectPsb\Api\PurchaseOrderApi(
 $party_id = 'party_id_example'; // string | The sender (buyer) partyId.
 $request_body = array('request_body_example'); // string[] | All possible partyIds of the recipient party.
 $preferred_document_type_id = 'preferred_document_type_id_example'; // string | The source or preferred documentTypeId to match with and to determine the partyId format.
-$document_family = new \EConnectPsb\Model\\EConnectPsb\Model\OrderDocumentFamily(); // \EConnectPsb\Model\OrderDocumentFamily | Document family
+$document_family = new \EConnect\Psb\Model\\EConnect\Psb\Model\OrderDocumentFamily(); // \EConnect\Psb\Model\OrderDocumentFamily | Document family
 
 try {
     $result = $apiInstance->apiV1PartyIdPurchaseOrderQueryRecipientPartyPost($party_id, $request_body, $preferred_document_type_id, $document_family);
@@ -129,11 +129,11 @@ try {
 | **party_id** | **string**| The sender (buyer) partyId. | |
 | **request_body** | [**string[]**](../Model/string.md)| All possible partyIds of the recipient party. | |
 | **preferred_document_type_id** | **string**| The source or preferred documentTypeId to match with and to determine the partyId format. | [optional] |
-| **document_family** | [**\EConnectPsb\Model\OrderDocumentFamily**](../Model/.md)| Document family | [optional] |
+| **document_family** | [**\EConnect\Psb\Model\OrderDocumentFamily**](../Model/.md)| Document family | [optional] |
 
 ### Return type
 
-[**\EConnectPsb\Model\LookupParty**](../Model/LookupParty.md)
+[**\EConnect\Psb\Model\LookupParty**](../Model/LookupParty.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ try {
 ## `sendOrderCancellation()`
 
 ```php
-sendOrderCancellation($party_id, $document_id, $order_cancellation): \EConnectPsb\Model\Document
+sendOrderCancellation($party_id, $document_id, $order_cancellation): \EConnect\Psb\Model\Document
 ```
 
 Send order cancellation to let the seller know the order is cancelled.
@@ -166,15 +166,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\PurchaseOrderApi(
+$apiInstance = new EConnect\Psb\Api\PurchaseOrderApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -182,7 +182,7 @@ $apiInstance = new EConnectPsb\Api\PurchaseOrderApi(
 );
 $party_id = 'party_id_example'; // string | Your partyId (buyer).
 $document_id = 'document_id_example'; // string | DocumentId that the cancellation is about.
-$order_cancellation = new \EConnectPsb\Model\OrderCancellation(); // \EConnectPsb\Model\OrderCancellation | Order cancellation message.
+$order_cancellation = new \EConnect\Psb\Model\OrderCancellation(); // \EConnect\Psb\Model\OrderCancellation | Order cancellation message.
 
 try {
     $result = $apiInstance->sendOrderCancellation($party_id, $document_id, $order_cancellation);
@@ -198,11 +198,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **party_id** | **string**| Your partyId (buyer). | |
 | **document_id** | **string**| DocumentId that the cancellation is about. | |
-| **order_cancellation** | [**\EConnectPsb\Model\OrderCancellation**](../Model/OrderCancellation.md)| Order cancellation message. | |
+| **order_cancellation** | [**\EConnect\Psb\Model\OrderCancellation**](../Model/OrderCancellation.md)| Order cancellation message. | |
 
 ### Return type
 
-[**\EConnectPsb\Model\Document**](../Model/Document.md)
+[**\EConnect\Psb\Model\Document**](../Model/Document.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ try {
 ## `sendPurchaseOrder()`
 
 ```php
-sendPurchaseOrder($party_id, $file, $receiver_id, $channel): \EConnectPsb\Model\Document
+sendPurchaseOrder($party_id, $file, $receiver_id, $channel): \EConnect\Psb\Model\Document
 ```
 
 Send a purchase order.
@@ -235,15 +235,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\PurchaseOrderApi(
+$apiInstance = new EConnect\Psb\Api\PurchaseOrderApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -273,7 +273,7 @@ try {
 
 ### Return type
 
-[**\EConnectPsb\Model\Document**](../Model/Document.md)
+[**\EConnect\Psb\Model\Document**](../Model/Document.md)
 
 ### Authorization
 

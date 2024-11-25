@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Api;
+namespace EConnect\Psb\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use EConnectPsb\ApiException;
-use EConnectPsb\Configuration;
-use EConnectPsb\HeaderSelector;
-use EConnectPsb\ObjectSerializer;
+use EConnect\Psb\ApiException;
+use EConnect\Psb\Configuration;
+use EConnect\Psb\HeaderSelector;
+use EConnect\Psb\ObjectSerializer;
 
 /**
  * PeppolApi Class Doc Comment
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -131,13 +131,13 @@ class PeppolApi
      * @param  string[] $party_ids All possible partyIds of the recipient party (required)
      * @param  string $preferred_document_type_id The source or preferred documentTypeId to match with and to determine the partyId format. (optional)
      * @param  string[] $document_type_ids Filter on document formats (optional)
-     * @param  \EConnectPsb\Model\DocumentFamily $document_family Document family (optional)
+     * @param  \EConnect\Psb\Model\DocumentFamily $document_family Document family (optional)
      * @param  bool $is_credit Example: Set it to true, to search only for CreditNotes or to false if you don&#39;t want to include CreditNotes in our result set. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDeliveryOptions'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return |\EConnectPsb\Model\DeliveryOption[]
+     * @return |\EConnect\Psb\Model\DeliveryOption[]
      */
     public function getDeliveryOptions($party_ids, $preferred_document_type_id = null, $document_type_ids = null, $document_family = null, $is_credit = null, string $contentType = self::contentTypes['getDeliveryOptions'][0])
     {
@@ -153,13 +153,13 @@ class PeppolApi
      * @param  string[] $party_ids All possible partyIds of the recipient party (required)
      * @param  string $preferred_document_type_id The source or preferred documentTypeId to match with and to determine the partyId format. (optional)
      * @param  string[] $document_type_ids Filter on document formats (optional)
-     * @param  \EConnectPsb\Model\DocumentFamily $document_family Document family (optional)
+     * @param  \EConnect\Psb\Model\DocumentFamily $document_family Document family (optional)
      * @param  bool $is_credit Example: Set it to true, to search only for CreditNotes or to false if you don&#39;t want to include CreditNotes in our result set. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDeliveryOptions'] to see the possible values for this operation
      *
-     * @throws \EConnectPsb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \EConnect\Psb\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of |\EConnectPsb\Model\DeliveryOption[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\EConnect\Psb\Model\DeliveryOption[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getDeliveryOptionsWithHttpInfo($party_ids, $preferred_document_type_id = null, $document_type_ids = null, $document_family = null, $is_credit = null, string $contentType = self::contentTypes['getDeliveryOptions'][0])
     {
@@ -190,11 +190,11 @@ class PeppolApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\EConnectPsb\Model\DeliveryOption[]' === '\SplFileObject') {
+                    if ('\EConnect\Psb\Model\DeliveryOption[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EConnectPsb\Model\DeliveryOption[]' !== 'string') {
+                        if ('\EConnect\Psb\Model\DeliveryOption[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -212,7 +212,7 @@ class PeppolApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EConnectPsb\Model\DeliveryOption[]', []),
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\DeliveryOption[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -231,7 +231,7 @@ class PeppolApi
                 );
             }
 
-            $returnType = '\EConnectPsb\Model\DeliveryOption[]';
+            $returnType = '\EConnect\Psb\Model\DeliveryOption[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -264,7 +264,7 @@ class PeppolApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EConnectPsb\Model\DeliveryOption[]',
+                        '\EConnect\Psb\Model\DeliveryOption[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -282,7 +282,7 @@ class PeppolApi
      * @param  string[] $party_ids All possible partyIds of the recipient party (required)
      * @param  string $preferred_document_type_id The source or preferred documentTypeId to match with and to determine the partyId format. (optional)
      * @param  string[] $document_type_ids Filter on document formats (optional)
-     * @param  \EConnectPsb\Model\DocumentFamily $document_family Document family (optional)
+     * @param  \EConnect\Psb\Model\DocumentFamily $document_family Document family (optional)
      * @param  bool $is_credit Example: Set it to true, to search only for CreditNotes or to false if you don&#39;t want to include CreditNotes in our result set. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDeliveryOptions'] to see the possible values for this operation
      *
@@ -307,7 +307,7 @@ class PeppolApi
      * @param  string[] $party_ids All possible partyIds of the recipient party (required)
      * @param  string $preferred_document_type_id The source or preferred documentTypeId to match with and to determine the partyId format. (optional)
      * @param  string[] $document_type_ids Filter on document formats (optional)
-     * @param  \EConnectPsb\Model\DocumentFamily $document_family Document family (optional)
+     * @param  \EConnect\Psb\Model\DocumentFamily $document_family Document family (optional)
      * @param  bool $is_credit Example: Set it to true, to search only for CreditNotes or to false if you don&#39;t want to include CreditNotes in our result set. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDeliveryOptions'] to see the possible values for this operation
      *
@@ -316,7 +316,7 @@ class PeppolApi
      */
     public function getDeliveryOptionsAsyncWithHttpInfo($party_ids, $preferred_document_type_id = null, $document_type_ids = null, $document_family = null, $is_credit = null, string $contentType = self::contentTypes['getDeliveryOptions'][0])
     {
-        $returnType = '\EConnectPsb\Model\DeliveryOption[]';
+        $returnType = '\EConnect\Psb\Model\DeliveryOption[]';
         $request = $this->getDeliveryOptionsRequest($party_ids, $preferred_document_type_id, $document_type_ids, $document_family, $is_credit, $contentType);
 
         return $this->client
@@ -361,7 +361,7 @@ class PeppolApi
      * @param  string[] $party_ids All possible partyIds of the recipient party (required)
      * @param  string $preferred_document_type_id The source or preferred documentTypeId to match with and to determine the partyId format. (optional)
      * @param  string[] $document_type_ids Filter on document formats (optional)
-     * @param  \EConnectPsb\Model\DocumentFamily $document_family Document family (optional)
+     * @param  \EConnect\Psb\Model\DocumentFamily $document_family Document family (optional)
      * @param  bool $is_credit Example: Set it to true, to search only for CreditNotes or to false if you don&#39;t want to include CreditNotes in our result set. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDeliveryOptions'] to see the possible values for this operation
      *

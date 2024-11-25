@@ -1,4 +1,4 @@
-# EConnectPsb\PurchaseInvoiceApi
+# EConnect\Psb\PurchaseInvoiceApi
 
 All URIs are relative to http://localhost, except if the operation defines another base path.
 
@@ -30,15 +30,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\PurchaseInvoiceApi(
+$apiInstance = new EConnect\Psb\Api\PurchaseInvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -96,15 +96,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\PurchaseInvoiceApi(
+$apiInstance = new EConnect\Psb\Api\PurchaseInvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -150,7 +150,7 @@ try {
 ## `getPurchaseInvoiceStatuses()`
 
 ```php
-getPurchaseInvoiceStatuses($party_id, $document_id): \EConnectPsb\Model\DocumentStatus[]
+getPurchaseInvoiceStatuses($party_id, $document_id): \EConnect\Psb\Model\DocumentStatus[]
 ```
 
 Get purchase invoice statuses.
@@ -165,15 +165,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\PurchaseInvoiceApi(
+$apiInstance = new EConnect\Psb\Api\PurchaseInvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -199,7 +199,7 @@ try {
 
 ### Return type
 
-[**\EConnectPsb\Model\DocumentStatus[]**](../Model/DocumentStatus.md)
+[**\EConnect\Psb\Model\DocumentStatus[]**](../Model/DocumentStatus.md)
 
 ### Authorization
 
@@ -217,7 +217,7 @@ try {
 ## `queryRecipientPartyForInvoiceResponse()`
 
 ```php
-queryRecipientPartyForInvoiceResponse($party_id, $request_body, $preferred_document_type_id): \EConnectPsb\Model\LookupParty
+queryRecipientPartyForInvoiceResponse($party_id, $request_body, $preferred_document_type_id): \EConnect\Psb\Model\LookupParty
 ```
 
 Lookup the recipient party (seller/supplier) for possible delivery.
@@ -232,15 +232,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\PurchaseInvoiceApi(
+$apiInstance = new EConnect\Psb\Api\PurchaseInvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -268,7 +268,7 @@ try {
 
 ### Return type
 
-[**\EConnectPsb\Model\LookupParty**](../Model/LookupParty.md)
+[**\EConnect\Psb\Model\LookupParty**](../Model/LookupParty.md)
 
 ### Authorization
 
@@ -286,7 +286,7 @@ try {
 ## `recognizePurchaseInvoice()`
 
 ```php
-recognizePurchaseInvoice($party_id, $file, $channel): \EConnectPsb\Model\Document
+recognizePurchaseInvoice($party_id, $file, $channel): \EConnect\Psb\Model\Document
 ```
 
 Recognize purchase invoice.
@@ -301,15 +301,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\PurchaseInvoiceApi(
+$apiInstance = new EConnect\Psb\Api\PurchaseInvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -337,7 +337,7 @@ try {
 
 ### Return type
 
-[**\EConnectPsb\Model\Document**](../Model/Document.md)
+[**\EConnect\Psb\Model\Document**](../Model/Document.md)
 
 ### Authorization
 
@@ -355,7 +355,7 @@ try {
 ## `sendInvoiceResponse()`
 
 ```php
-sendInvoiceResponse($party_id, $document_id, $invoice_response): \EConnectPsb\Model\Document
+sendInvoiceResponse($party_id, $document_id, $invoice_response): \EConnect\Psb\Model\Document
 ```
 
 Send invoice response to let the seller know the status of the received invoice.
@@ -370,15 +370,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 // Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new EConnectPsb\Api\PurchaseInvoiceApi(
+$apiInstance = new EConnect\Psb\Api\PurchaseInvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -386,7 +386,7 @@ $apiInstance = new EConnectPsb\Api\PurchaseInvoiceApi(
 );
 $party_id = 'party_id_example'; // string | Your partyId (buyer).
 $document_id = 'document_id_example'; // string | DocumentId that the response is about.
-$invoice_response = new \EConnectPsb\Model\InvoiceResponse(); // \EConnectPsb\Model\InvoiceResponse | Invoice response message.
+$invoice_response = new \EConnect\Psb\Model\InvoiceResponse(); // \EConnect\Psb\Model\InvoiceResponse | Invoice response message.
 
 try {
     $result = $apiInstance->sendInvoiceResponse($party_id, $document_id, $invoice_response);
@@ -402,11 +402,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **party_id** | **string**| Your partyId (buyer). | |
 | **document_id** | **string**| DocumentId that the response is about. | |
-| **invoice_response** | [**\EConnectPsb\Model\InvoiceResponse**](../Model/InvoiceResponse.md)| Invoice response message. | |
+| **invoice_response** | [**\EConnect\Psb\Model\InvoiceResponse**](../Model/InvoiceResponse.md)| Invoice response message. | |
 
 ### Return type
 
-[**\EConnectPsb\Model\Document**](../Model/Document.md)
+[**\EConnect\Psb\Model\Document**](../Model/Document.md)
 
 ### Authorization
 

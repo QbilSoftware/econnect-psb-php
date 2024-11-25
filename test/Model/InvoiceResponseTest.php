@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace EConnectPsb\Test\Model;
+namespace EConnect\Psb\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -36,7 +36,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description InvoiceResponse
- * @package     EConnectPsb
+ * @package     EConnect\Psb
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

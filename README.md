@@ -7,8 +7,7 @@ PHP SDK for econnect PSB (https://accp-psb.econnect.eu/?urls.primaryName=V1)
 
 ### Requirements
 
-PHP 7.4 and later.
-Should also work with PHP 8.0.
+PHP 8.2 and later.
 
 ### Composer
 
@@ -50,28 +49,27 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnectPsb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
+$config = \EConnect\Psb\Configuration::getDefaultConfiguration();
 
-// Configure OAuth2 access token for authorization: Bearer
-$config = EConnectPsb\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config
+    ->setUsername("{username}")
+    ->setPassword("{password}");
+    ->setHost("https://psb.econnect.eu")
+    ->setApiKey('Subscription-Key', '{subscription key}');
+    
+$authN = new \EConnect\Psb\Authentication($config);
+$authN->login('{clientId}', '{clientSecret}');
 
-
-$apiInstance = new EConnectPsb\Api\HookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+$salesInvoiceApi = new EConnect\Psb\Api\SalesInvoiceApi(
     new GuzzleHttp\Client(),
-    $config
+    $config,
 );
 
-try {
-    $result = $apiInstance->getHookConfigs();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling HookApi->getHookConfigs: ', $e->getMessage(), PHP_EOL;
-}
+$yourPartyId = "senderPartyId";
+$filePath = "./Ubl.xml";
+$receiverPartyId = null;
 
+$salesInvoiceApi->sendSalesInvoice($yourPartyId, $filePath, $receiverPartyId);
 ```
 
 ## API Endpoints

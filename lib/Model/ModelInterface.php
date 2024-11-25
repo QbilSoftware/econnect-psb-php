@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb\Model
+ * @package  EConnect\Psb\Model
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,12 +27,12 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Model;
+namespace EConnect\Psb\Model;
 
 /**
  * Interface abstracting model access.
  *
- * @package EConnectPsb\Model
+ * @package EConnect\Psb\Model
  * @author  OpenAPI Generator team
  */
 interface ModelInterface

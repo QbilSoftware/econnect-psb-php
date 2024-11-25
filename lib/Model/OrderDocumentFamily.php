@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,14 +27,14 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Model;
-use \EConnectPsb\ObjectSerializer;
+namespace EConnect\Psb\Model;
+use \EConnect\Psb\ObjectSerializer;
 
 /**
  * OrderDocumentFamily Class Doc Comment
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

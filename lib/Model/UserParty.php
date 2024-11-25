@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Model;
+namespace EConnect\Psb\Model;
 
 use \ArrayAccess;
-use \EConnectPsb\ObjectSerializer;
+use \EConnect\Psb\ObjectSerializer;
 
 /**
  * UserParty Class Doc Comment
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class UserParty implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'permissions' => '\EConnectPsb\Model\PartyPermissions'
+        'permissions' => '\EConnect\Psb\Model\PartyPermissions'
     ];
 
     /**
@@ -375,7 +375,7 @@ class UserParty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets permissions
      *
-     * @return \EConnectPsb\Model\PartyPermissions|null
+     * @return \EConnect\Psb\Model\PartyPermissions|null
      */
     public function getPermissions()
     {
@@ -385,7 +385,7 @@ class UserParty implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets permissions
      *
-     * @param \EConnectPsb\Model\PartyPermissions|null $permissions permissions
+     * @param \EConnect\Psb\Model\PartyPermissions|null $permissions permissions
      *
      * @return self
      */

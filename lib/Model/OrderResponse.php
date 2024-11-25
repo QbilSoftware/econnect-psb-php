@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace EConnectPsb\Model;
+namespace EConnect\Psb\Model;
 
 use \ArrayAccess;
-use \EConnectPsb\ObjectSerializer;
+use \EConnect\Psb\ObjectSerializer;
 
 /**
  * OrderResponse Class Doc Comment
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\EConnectPsb\Model\OrderResponseCodes',
+        'status' => '\EConnect\Psb\Model\OrderResponseCodes',
         'note' => 'string'
     ];
 
@@ -303,7 +303,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \EConnectPsb\Model\OrderResponseCodes
+     * @return \EConnect\Psb\Model\OrderResponseCodes
      */
     public function getStatus()
     {
@@ -313,7 +313,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \EConnectPsb\Model\OrderResponseCodes $status status
+     * @param \EConnect\Psb\Model\OrderResponseCodes $status status
      *
      * @return self
      */

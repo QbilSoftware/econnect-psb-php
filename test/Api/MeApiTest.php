@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace EConnectPsb\Test\Api;
+namespace EConnect\Psb\Test\Api;
 
-use \EConnectPsb\Configuration;
-use \EConnectPsb\ApiException;
-use \EConnectPsb\ObjectSerializer;
+use \EConnect\Psb\Configuration;
+use \EConnect\Psb\ApiException;
+use \EConnect\Psb\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
  * MeApiTest Class Doc Comment
  *
  * @category Class
- * @package  EConnectPsb
+ * @package  EConnect\Psb
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
