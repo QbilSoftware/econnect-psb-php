@@ -1937,15 +1937,6 @@ class PurchaseInvoiceApi
      */
     protected function createRequest(string $method, $uri, array $headers = [], $body = null): RequestInterface
     {
-        if ($this->requestFactory instanceof RequestFactoryInterface) {
-            return $this->requestFactory->createRequest(
-                $method,
-                $uri,
-                $headers,
-                $body
-            );
-        }
-
         if (is_string($body) && '' !== $body && null === $this->streamFactory) {
             throw new \RuntimeException('Cannot create request: A stream factory is required to create a request with a non-empty string body.');
         }

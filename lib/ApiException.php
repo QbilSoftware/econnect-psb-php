@@ -92,7 +92,7 @@ class ApiException extends RequestException
     /**
      * Gets the HTTP body of the server response either as Json or string
      *
-     * @return \stdClass|string|null HTTP body of the server response either as \stdClass or string
+     * @return string|null HTTP body of the server response
      */
     public function getResponseBody()
     {
