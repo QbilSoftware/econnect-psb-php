@@ -201,45 +201,38 @@ class PurchaseInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: null, 1: int, 2: string[]} array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function deletePurchaseInvoiceWithHttpInfo($party_id, $document_id)
     {
         $request = $this->deletePurchaseInvoiceRequest($party_id, $document_id);
 
         try {
-            try {
-                $response = $this->httpClient->sendRequest($request);
-            } catch (HttpException $e) {
-                $response = $e->getResponse();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $response->getStatusCode(),
-                        (string) $request->getUri()
-                    ),
-                    $request,
-                    $response,
-                    $e
-                );
-            } catch (ClientExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $request,
-                    null,
-                    $e
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
+            $response = $this->httpClient->sendRequest($request);
+        } catch (HttpException $e) {
+            $response = $e->getResponse();
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $response->getStatusCode(),
+                    (string) $request->getUri()
+                ),
+                $request,
+                $response,
+                $e
+            );
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $request,
+                null,
+                $e
+            );
         }
+
+        $statusCode = $response->getStatusCode();
+
+        return [null, $statusCode, $response->getHeaders()];
     }
 
     /**
@@ -430,11 +423,11 @@ class PurchaseInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\SplFileObject
+     * @return \SplFileObject
      */
     public function downloadPurchaseInvoice($party_id, $document_id, $target_format = null)
     {
-        list($response) = $this->downloadPurchaseInvoiceWithHttpInfo($party_id, $document_id, $target_format);
+        [$response] = $this->downloadPurchaseInvoiceWithHttpInfo($party_id, $document_id, $target_format);
         return $response;
     }
 
@@ -447,9 +440,9 @@ class PurchaseInvoiceApi
      * @param  string $document_id The service bus documentId. (required)
      * @param  string $target_format The target format. (optional)
      *
-     * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @return array{0: \SplFileObject, 1: int, 2: string[]} array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function downloadPurchaseInvoiceWithHttpInfo($party_id, $document_id, $target_format = null)
     {
@@ -738,11 +731,11 @@ class PurchaseInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\DocumentStatus[]
+     * @return \EConnect\Psb\Model\DocumentStatus[]
      */
     public function getPurchaseInvoiceStatuses($party_id, $document_id)
     {
-        list($response) = $this->getPurchaseInvoiceStatusesWithHttpInfo($party_id, $document_id);
+        [$response] = $this->getPurchaseInvoiceStatusesWithHttpInfo($party_id, $document_id);
         return $response;
     }
 
@@ -756,7 +749,7 @@ class PurchaseInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\DocumentStatus[], HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\DocumentStatus[], 1: int, 2: string[]} array of \EConnect\Psb\Model\DocumentStatus[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getPurchaseInvoiceStatusesWithHttpInfo($party_id, $document_id)
     {
@@ -1033,7 +1026,7 @@ class PurchaseInvoiceApi
      */
     public function queryRecipientPartyForInvoiceResponse($party_id, $request_body, $preferred_document_type_id = null)
     {
-        list($response) = $this->queryRecipientPartyForInvoiceResponseWithHttpInfo($party_id, $request_body, $preferred_document_type_id);
+        [$response] = $this->queryRecipientPartyForInvoiceResponseWithHttpInfo($party_id, $request_body, $preferred_document_type_id);
         return $response;
     }
 
@@ -1048,7 +1041,7 @@ class PurchaseInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\LookupParty, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\LookupParty, 1: int, 2: string[]} array of \EConnect\Psb\Model\LookupParty, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryRecipientPartyForInvoiceResponseWithHttpInfo($party_id, $request_body, $preferred_document_type_id = null)
     {
@@ -1332,11 +1325,11 @@ class PurchaseInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\Document
+     * @return \EConnect\Psb\Model\Document
      */
     public function recognizePurchaseInvoice($party_id, $file, $channel = null)
     {
-        list($response) = $this->recognizePurchaseInvoiceWithHttpInfo($party_id, $file, $channel);
+        [$response] = $this->recognizePurchaseInvoiceWithHttpInfo($party_id, $file, $channel);
         return $response;
     }
 
@@ -1351,7 +1344,7 @@ class PurchaseInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\Document, 1: int, 2: string[]} array of \EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
      */
     public function recognizePurchaseInvoiceWithHttpInfo($party_id, $file, $channel = null)
     {
@@ -1637,11 +1630,11 @@ class PurchaseInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\Document
+     * @return \EConnect\Psb\Model\Document
      */
     public function sendInvoiceResponse($party_id, $document_id, $invoice_response)
     {
-        list($response) = $this->sendInvoiceResponseWithHttpInfo($party_id, $document_id, $invoice_response);
+        [$response] = $this->sendInvoiceResponseWithHttpInfo($party_id, $document_id, $invoice_response);
         return $response;
     }
 
@@ -1656,7 +1649,7 @@ class PurchaseInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\Document, 1: int, 2: string[]} array of \EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendInvoiceResponseWithHttpInfo($party_id, $document_id, $invoice_response)
     {

@@ -198,7 +198,7 @@ class MeApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\User, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\User, 1: int, 2: string[]} return array{0: \EConnect\Psb\Model\User, 1: int, 2: string[]} array of \EConnect\Psb\Model\User, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserWithHttpInfo()
     {
@@ -442,7 +442,7 @@ class MeApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\UserParty[], HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\UserParty[], 1: int, 2: string[]} array of \EConnect\Psb\Model\UserParty[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserPartyWithHttpInfo()
     {

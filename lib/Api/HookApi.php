@@ -199,7 +199,7 @@ class HookApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\Hook[], HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\Hook[], 1: int, 2: string[]} return array{0: \EConnect\Psb\Model\Hook[], 1: int, 2: string[]} array of \EConnect\Psb\Model\Hook[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getHookConfigsWithHttpInfo()
     {
@@ -445,7 +445,7 @@ class HookApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\Hook[], HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\Hook[], 1: int, 2: string[]} array of \EConnect\Psb\Model\Hook[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getHooksWithHttpInfo($party_id)
     {
@@ -711,45 +711,38 @@ class HookApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: null, 1: int, 2: string[]} array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeHookConfigWithHttpInfo($hook_id)
     {
         $request = $this->removeHookConfigRequest($hook_id);
 
         try {
-            try {
-                $response = $this->httpClient->sendRequest($request);
-            } catch (HttpException $e) {
-                $response = $e->getResponse();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $response->getStatusCode(),
-                        (string) $request->getUri()
-                    ),
-                    $request,
-                    $response,
-                    $e
-                );
-            } catch (ClientExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $request,
-                    null,
-                    $e
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
+            $response = $this->httpClient->sendRequest($request);
+        } catch (HttpException $e) {
+            $response = $e->getResponse();
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $response->getStatusCode(),
+                    (string) $request->getUri()
+                ),
+                $request,
+                $response,
+                $e
+            );
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $request,
+                null,
+                $e
+            );
         }
+
+        $statusCode = $response->getStatusCode();
+
+        return [null, $statusCode, $response->getHeaders()];
     }
 
     /**
@@ -937,7 +930,7 @@ class HookApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\Document, 1: int, 2: string[]} array of \EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendHookPingWithHttpInfo($party_id)
     {
@@ -1187,7 +1180,7 @@ class HookApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\Hook
+     * @return \EConnect\Psb\Model\Hook
      */
     public function setHookConfig($hook)
     {
@@ -1204,7 +1197,7 @@ class HookApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\Hook, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\Hook, 1: int, 2: string[]} array of \EConnect\Psb\Model\Hook, HTTP status code, HTTP response headers (array of strings)
      */
     public function setHookConfigWithHttpInfo($hook)
     {
@@ -1449,7 +1442,7 @@ class HookApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\Hook
+     * @return \EConnect\Psb\Model\Hook
      */
     public function subscribe($party_id, $hook)
     {
@@ -1467,7 +1460,7 @@ class HookApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\Hook, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\Hook, 1: int, 2: string[]} array of \EConnect\Psb\Model\Hook, HTTP status code, HTTP response headers (array of strings)
      */
     public function subscribeWithHttpInfo($party_id, $hook)
     {
@@ -1750,45 +1743,38 @@ class HookApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: null, 1: int, 2: string[]} array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function unSubscribeWithHttpInfo($party_id, $hook_id)
     {
         $request = $this->unSubscribeRequest($party_id, $hook_id);
 
         try {
-            try {
-                $response = $this->httpClient->sendRequest($request);
-            } catch (HttpException $e) {
-                $response = $e->getResponse();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $response->getStatusCode(),
-                        (string) $request->getUri()
-                    ),
-                    $request,
-                    $response,
-                    $e
-                );
-            } catch (ClientExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $request,
-                    null,
-                    $e
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
+            $response = $this->httpClient->sendRequest($request);
+        } catch (HttpException $e) {
+            $response = $e->getResponse();
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $response->getStatusCode(),
+                    (string) $request->getUri()
+                ),
+                $request,
+                $response,
+                $e
+            );
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $request,
+                null,
+                $e
+            );
         }
+
+        $statusCode = $response->getStatusCode();
+
+        return [null, $statusCode, $response->getHeaders()];
     }
 
     /**

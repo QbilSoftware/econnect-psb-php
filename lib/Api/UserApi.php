@@ -200,7 +200,7 @@ class UserApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\User, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\User, 1: int, 2: string[]} array of \EConnect\Psb\Model\User, HTTP status code, HTTP response headers (array of strings)
      */
     public function addOrUpdateUserWithHttpInfo($user = null)
     {
@@ -457,7 +457,7 @@ class UserApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\UserParty, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\UserParty, 1: int, 2: string[]} array of \EConnect\Psb\Model\UserParty, HTTP status code, HTTP response headers (array of strings)
      */
     public function addOrUpdateUserPartyWithHttpInfo($name, $user_party)
     {
@@ -734,45 +734,38 @@ class UserApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: null, 1: int, 2: string[]} array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteUserWithHttpInfo($name)
     {
         $request = $this->deleteUserRequest($name);
 
         try {
-            try {
-                $response = $this->httpClient->sendRequest($request);
-            } catch (HttpException $e) {
-                $response = $e->getResponse();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $response->getStatusCode(),
-                        (string) $request->getUri()
-                    ),
-                    $request,
-                    $response,
-                    $e
-                );
-            } catch (ClientExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $request,
-                    null,
-                    $e
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
+            $response = $this->httpClient->sendRequest($request);
+        } catch (HttpException $e) {
+            $response = $e->getResponse();
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $response->getStatusCode(),
+                    (string) $request->getUri()
+                ),
+                $request,
+                $response,
+                $e
+            );
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $request,
+                null,
+                $e
+            );
         }
+
+        $statusCode = $response->getStatusCode();
+
+        return [null, $statusCode, $response->getHeaders()];
     }
 
     /**
@@ -954,45 +947,38 @@ class UserApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: null, 1: int, 2: string[]} array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteUserPartyWithHttpInfo($name, $party_id)
     {
         $request = $this->deleteUserPartyRequest($name, $party_id);
 
         try {
-            try {
-                $response = $this->httpClient->sendRequest($request);
-            } catch (HttpException $e) {
-                $response = $e->getResponse();
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $response->getStatusCode(),
-                        (string) $request->getUri()
-                    ),
-                    $request,
-                    $response,
-                    $e
-                );
-            } catch (ClientExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $request,
-                    null,
-                    $e
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
+            $response = $this->httpClient->sendRequest($request);
+        } catch (HttpException $e) {
+            $response = $e->getResponse();
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $response->getStatusCode(),
+                    (string) $request->getUri()
+                ),
+                $request,
+                $response,
+                $e
+            );
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $request,
+                null,
+                $e
+            );
         }
+
+        $statusCode = $response->getStatusCode();
+
+        return [null, $statusCode, $response->getHeaders()];
     }
 
     /**
@@ -1190,7 +1176,7 @@ class UserApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\UserParty[], HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\UserParty[], 1: int, 2: string[]} array of \EConnect\Psb\Model\UserParty[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserPartiesWithHttpInfo($name)
     {
@@ -1451,7 +1437,7 @@ class UserApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\User[], HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\User[], 1: int, 2: string[]} array of \EConnect\Psb\Model\User[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsersWithHttpInfo()
     {

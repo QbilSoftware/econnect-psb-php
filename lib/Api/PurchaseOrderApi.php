@@ -184,7 +184,7 @@ class PurchaseOrderApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\DocumentStatus[]
+     * @return \EConnect\Psb\Model\DocumentStatus[]
      */
     public function apiV1PartyIdPurchaseOrderDocumentIdStatusGet($party_id, $document_id)
     {
@@ -202,7 +202,7 @@ class PurchaseOrderApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\DocumentStatus[], HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\DocumentStatus[], 1: int, 2: string[]} array of \EConnect\Psb\Model\DocumentStatus[], HTTP status code, HTTP response headers (array of strings)
      */
     public function apiV1PartyIdPurchaseOrderDocumentIdStatusGetWithHttpInfo($party_id, $document_id)
     {
@@ -496,7 +496,7 @@ class PurchaseOrderApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\LookupParty, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\LookupParty, 1: int, 2: string[]} array of \EConnect\Psb\Model\LookupParty, HTTP status code, HTTP response headers (array of strings)
      */
     public function apiV1PartyIdPurchaseOrderQueryRecipientPartyPostWithHttpInfo($party_id, $request_body, $preferred_document_type_id = null, $document_family = null)
     {
@@ -793,7 +793,7 @@ class PurchaseOrderApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\Document
+     * @return \EConnect\Psb\Model\Document
      */
     public function sendOrderCancellation($party_id, $document_id, $order_cancellation)
     {
@@ -812,7 +812,7 @@ class PurchaseOrderApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\Document, 1: int, 2: string[]} array of \EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendOrderCancellationWithHttpInfo($party_id, $document_id, $order_cancellation)
     {
@@ -1101,7 +1101,7 @@ class PurchaseOrderApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\Document
+     * @return \EConnect\Psb\Model\Document
      */
     public function sendPurchaseOrder($party_id, $file, $receiver_id = null, $channel = null)
     {
@@ -1121,7 +1121,7 @@ class PurchaseOrderApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\Document, 1: int, 2: string[]} array of \EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendPurchaseOrderWithHttpInfo($party_id, $file, $receiver_id = null, $channel = null)
     {

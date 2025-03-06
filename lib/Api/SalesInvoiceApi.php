@@ -184,7 +184,7 @@ class SalesInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\DocumentStatus[]
+     * @return \EConnect\Psb\Model\DocumentStatus[]
      */
     public function getSalesInvoiceStatuses($party_id, $document_id)
     {
@@ -202,7 +202,7 @@ class SalesInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\DocumentStatus[], HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\DocumentStatus[], 1: int, 2: string[]} array of \EConnect\Psb\Model\DocumentStatus[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getSalesInvoiceStatusesWithHttpInfo($party_id, $document_id)
     {
@@ -494,7 +494,7 @@ class SalesInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EConnect\Psb\Model\LookupParty, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\LookupParty, 1: int, 2: string[]} array of \EConnect\Psb\Model\LookupParty, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryRecipientPartyForSalesInvoiceWithHttpInfo($party_id, $request_body, $preferred_document_type_id = null)
     {
@@ -778,7 +778,7 @@ class SalesInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\Document
+     * @return \EConnect\Psb\Model\Document
      */
     public function recognizeSalesInvoice($party_id, $file, $channel = null)
     {
@@ -797,7 +797,7 @@ class SalesInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\Document, 1: int, 2: string[]} array of \EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
      */
     public function recognizeSalesInvoiceWithHttpInfo($party_id, $file, $channel = null)
     {
@@ -1084,7 +1084,7 @@ class SalesInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\Document
+     * @return \EConnect\Psb\Model\Document
      */
     public function sendSalesInvoice($party_id, $file, $receiver_id = null, $channel = null)
     {
@@ -1104,7 +1104,7 @@ class SalesInvoiceApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\Document, 1: int, 2: string[]} array of \EConnect\Psb\Model\Document, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendSalesInvoiceWithHttpInfo($party_id, $file, $receiver_id = null, $channel = null)
     {

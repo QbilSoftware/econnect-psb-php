@@ -187,7 +187,7 @@ class PeppolApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\EConnect\Psb\Model\DeliveryOption[]
+     * @return \EConnect\Psb\Model\DeliveryOption[]
      */
     public function getDeliveryOptions($party_ids, $preferred_document_type_id = null, $document_type_ids = null, $document_family = null, $is_credit = null)
     {
@@ -208,7 +208,7 @@ class PeppolApi
      *
      * @throws \EConnect\Psb\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\EConnect\Psb\Model\DeliveryOption[], HTTP status code, HTTP response headers (array of strings)
+     * @return array{0: \EConnect\Psb\Model\DeliveryOption[], 1: int, 2: string[]} array of \EConnect\Psb\Model\DeliveryOption[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getDeliveryOptionsWithHttpInfo($party_ids, $preferred_document_type_id = null, $document_type_ids = null, $document_family = null, $is_credit = null)
     {
