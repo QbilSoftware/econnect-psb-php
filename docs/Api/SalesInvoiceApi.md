@@ -1,13 +1,13 @@
 # EConnect\Psb\SalesInvoiceApi
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to http://localhost.
 
-| Method | HTTP request | Description |
-| ------------- | ------------- | ------------- |
-| [**getSalesInvoiceStatuses()**](SalesInvoiceApi.md#getSalesInvoiceStatuses) | **GET** /api/v1/{partyId}/salesInvoice/{documentId}/status | Get sales invoice statuses. |
-| [**queryRecipientPartyForSalesInvoice()**](SalesInvoiceApi.md#queryRecipientPartyForSalesInvoice) | **POST** /api/v1/{partyId}/salesInvoice/queryRecipientParty | Lookup the recipient party (buyer/customer) for possible delivery. |
-| [**recognizeSalesInvoice()**](SalesInvoiceApi.md#recognizeSalesInvoice) | **POST** /api/v1/{partyId}/salesInvoice/recognize | Recognize sales invoice. |
-| [**sendSalesInvoice()**](SalesInvoiceApi.md#sendSalesInvoice) | **POST** /api/v1/{partyId}/salesInvoice/send | Send an invoice. |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**getSalesInvoiceStatuses()**](SalesInvoiceApi.md#getSalesInvoiceStatuses) | **GET** /api/v1/{partyId}/salesInvoice/{documentId}/status | Get sales invoice statuses (FOR DEBUGGING ONLY).
+[**queryRecipientPartyForSalesInvoice()**](SalesInvoiceApi.md#queryRecipientPartyForSalesInvoice) | **POST** /api/v1/{partyId}/salesInvoice/queryRecipientParty | Lookup the recipient party (buyer/customer) for possible delivery.
+[**recognizeSalesInvoice()**](SalesInvoiceApi.md#recognizeSalesInvoice) | **POST** /api/v1/{partyId}/salesInvoice/recognize | Recognize sales invoice.
+[**sendSalesInvoice()**](SalesInvoiceApi.md#sendSalesInvoice) | **POST** /api/v1/{partyId}/salesInvoice/send | Send an invoice.
 
 
 ## `getSalesInvoiceStatuses()`
@@ -16,7 +16,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 getSalesInvoiceStatuses($party_id, $document_id): \EConnect\Psb\Model\DocumentStatus[]
 ```
 
-Get sales invoice statuses.
+Get sales invoice statuses (FOR DEBUGGING ONLY).
 
 Get list of statuses of the sales invoice.
 
@@ -37,8 +37,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\SalesInvoiceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -55,10 +55,10 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| The sender partyId. | |
-| **document_id** | **string**| The service bus documentId. | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| The sender partyId. |
+ **document_id** | **string**| The service bus documentId. |
 
 ### Return type
 
@@ -104,8 +104,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\SalesInvoiceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -123,11 +123,11 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| The sender (seller/supplier) partyId. | |
-| **request_body** | [**string[]**](../Model/string.md)| All possible partyIds of the recipient party. | |
-| **preferred_document_type_id** | **string**| The source or preferred documentTypeId to match with and to determine the partyId format. | [optional] |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| The sender (seller/supplier) partyId. |
+ **request_body** | [**string[]**](../Model/string.md)| All possible partyIds of the recipient party. |
+ **preferred_document_type_id** | **string**| The source or preferred documentTypeId to match with and to determine the partyId format. | [optional]
 
 ### Return type
 
@@ -173,8 +173,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\SalesInvoiceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -192,11 +192,11 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| The sender partyId | |
-| **file** | **\SplFileObject****\SplFileObject**| The service bus documentId | |
-| **channel** | **string**| An optional parameter to enforce the use of a delivery channel. | [optional] |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| The sender partyId |
+ **file** | **\SplFileObject****\SplFileObject**| The service bus documentId |
+ **channel** | **string**| An optional parameter to enforce the use of a delivery channel. | [optional]
 
 ### Return type
 
@@ -242,8 +242,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\SalesInvoiceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -262,12 +262,12 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| The sender partyId. | |
-| **file** | **\SplFileObject****\SplFileObject**| Multipart file upload. | |
-| **receiver_id** | **string**| An optional receiver partyId to enforce delivery to a specific endpoint. The receiverId will be injected into the document. | [optional] |
-| **channel** | **string**| An optional parameter to enforce the use of a delivery channel. | [optional] |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| The sender partyId. |
+ **file** | **\SplFileObject****\SplFileObject**| Multipart file upload. |
+ **receiver_id** | **string**| An optional receiver partyId to enforce delivery to a specific endpoint. The receiverId will be injected into the document. | [optional]
+ **channel** | **string**| An optional parameter to enforce the use of a delivery channel. | [optional]
 
 ### Return type
 

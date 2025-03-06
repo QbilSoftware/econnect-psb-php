@@ -1,15 +1,15 @@
 # EConnect\Psb\UserApi
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to http://localhost.
 
-| Method | HTTP request | Description |
-| ------------- | ------------- | ------------- |
-| [**addOrUpdateUser()**](UserApi.md#addOrUpdateUser) | **PUT** /api/v1/user | Add or update users. |
-| [**addOrUpdateUserParty()**](UserApi.md#addOrUpdateUserParty) | **PUT** /api/v1/user/{name}/party | Add or update user&#39;s party. |
-| [**deleteUser()**](UserApi.md#deleteUser) | **DELETE** /api/v1/user/{name} | Delete user. |
-| [**deleteUserParty()**](UserApi.md#deleteUserParty) | **DELETE** /api/v1/user/{name}/party/{partyId} | Removes user&#39;s party. |
-| [**getUserParties()**](UserApi.md#getUserParties) | **GET** /api/v1/user/{name}/party | Get user&#39;s parties. |
-| [**getUsers()**](UserApi.md#getUsers) | **GET** /api/v1/user | List users. |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**addOrUpdateUser()**](UserApi.md#addOrUpdateUser) | **PUT** /api/v1/user | Add or update users.
+[**addOrUpdateUserParty()**](UserApi.md#addOrUpdateUserParty) | **PUT** /api/v1/user/{name}/party | Add or update user&#39;s party.
+[**deleteUser()**](UserApi.md#deleteUser) | **DELETE** /api/v1/user/{name} | Delete user.
+[**deleteUserParty()**](UserApi.md#deleteUserParty) | **DELETE** /api/v1/user/{name}/party/{partyId} | Removes user&#39;s party.
+[**getUserParties()**](UserApi.md#getUserParties) | **GET** /api/v1/user/{name}/party | Get user&#39;s parties.
+[**getUsers()**](UserApi.md#getUsers) | **GET** /api/v1/user | List users.
 
 
 ## `addOrUpdateUser()`
@@ -39,8 +39,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\UserApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -56,9 +56,9 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **user** | [**\EConnect\Psb\Model\User**](../Model/User.md)| The user that will be added or updated. | [optional] |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**\EConnect\Psb\Model\User**](../Model/User.md)| The user that will be added or updated. | [optional]
 
 ### Return type
 
@@ -104,8 +104,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\UserApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -122,10 +122,10 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **name** | **string**|  | |
-| **user_party** | [**\EConnect\Psb\Model\UserParty**](../Model/UserParty.md)|  | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**|  |
+ **user_party** | [**\EConnect\Psb\Model\UserParty**](../Model/UserParty.md)|  |
 
 ### Return type
 
@@ -171,8 +171,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\UserApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -187,9 +187,9 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **name** | **string**| The name for the user. | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| The name for the user. |
 
 ### Return type
 
@@ -235,8 +235,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\UserApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -252,10 +252,10 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **name** | **string**|  | |
-| **party_id** | **string**|  | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**|  |
+ **party_id** | **string**|  |
 
 ### Return type
 
@@ -301,8 +301,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\UserApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -318,9 +318,9 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **name** | **string**|  | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**|  |
 
 ### Return type
 
@@ -366,8 +366,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\UserApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );

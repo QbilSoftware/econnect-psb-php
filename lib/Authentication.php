@@ -32,14 +32,14 @@ class Authentication
 
         $oidc->addScope(["ap"]);
 
-        if ($this->validUntil != null && $this->validUntil < $this->clock->now()) {
+        if ($this->validUntil !== null && $this->validUntil < $this->clock->now()) {
             return $this->token;
         }
 
         $oidc->addAuthParam(['username' =>  $this->config->getUsername()]);
         $oidc->addAuthParam(['password' =>  $this->config->getPassword()]);
 
-        $loginResponse = $oidc->requestResourceOwnerToken(TRUE);
+        $loginResponse = $oidc->requestResourceOwnerToken(true);
 
         if (empty($loginResponse->expires_in)) {
             throw new \Exception('PSB login failed.');

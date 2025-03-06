@@ -1,10 +1,10 @@
 # EConnect\Psb\PeppolApi
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to http://localhost.
 
-| Method | HTTP request | Description |
-| ------------- | ------------- | ------------- |
-| [**getDeliveryOptions()**](PeppolApi.md#getDeliveryOptions) | **GET** /api/v1/peppol/deliveryOption | Advanced recipient party lookup in Peppol. |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**getDeliveryOptions()**](PeppolApi.md#getDeliveryOptions) | **GET** /api/v1/peppol/deliveryOption | Advanced recipient party lookup in Peppol.
 
 
 ## `getDeliveryOptions()`
@@ -34,8 +34,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\PeppolApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -55,13 +55,13 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_ids** | [**string[]**](../Model/string.md)| All possible partyIds of the recipient party | |
-| **preferred_document_type_id** | **string**| The source or preferred documentTypeId to match with and to determine the partyId format. | [optional] |
-| **document_type_ids** | [**string[]**](../Model/string.md)| Filter on document formats | [optional] |
-| **document_family** | [**\EConnect\Psb\Model\DocumentFamily**](../Model/.md)| Document family | [optional] |
-| **is_credit** | **bool**| Example: Set it to true, to search only for CreditNotes or to false if you don&#39;t want to include CreditNotes in our result set. | [optional] |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_ids** | [**string[]**](../Model/string.md)| All possible partyIds of the recipient party |
+ **preferred_document_type_id** | **string**| The source or preferred documentTypeId to match with and to determine the partyId format. | [optional]
+ **document_type_ids** | [**string[]**](../Model/string.md)| Filter on document formats | [optional]
+ **document_family** | [**\EConnect\Psb\Model\DocumentFamily**](../Model/.md)| Document family | [optional]
+ **is_credit** | **bool**| Example: Set it to true, to search only for CreditNotes or to false if you don&#39;t want to include CreditNotes in our result set. | [optional]
 
 ### Return type
 

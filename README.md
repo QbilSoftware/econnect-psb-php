@@ -1,6 +1,6 @@
-# Econnect PSB PHP client
+# OpenAPIClient-php
 
-PHP SDK for econnect PSB (https://accp-psb.econnect.eu/?urls.primaryName=V1)
+PHP SDK for econnect PSB (https://psb.econnect.eu/?urls.primaryName=V1)
 
 
 ## Installation & Usage
@@ -29,13 +29,25 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
 
 Then run `composer install`
 
+Your project is free to choose the http client of your choice
+Please require packages that will provide http client functionality:
+https://packagist.org/providers/psr/http-client-implementation
+https://packagist.org/providers/php-http/async-client-implementation
+https://packagist.org/providers/psr/http-factory-implementation
+
+As an example:
+
+```
+composer require guzzlehttp/guzzle php-http/guzzle7-adapter http-interop/http-factory-guzzle
+```
+
 ### Manual Installation
 
 Download the files and include `autoload.php`:
 
 ```php
 <?php
-require_once('/path/to/econnect-psb-php/vendor/autoload.php');
+require_once('/path/to/OpenAPIClient-php/vendor/autoload.php');
 ```
 
 ## Getting Started
@@ -49,7 +61,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: Subscription-Key
-$config = \EConnect\Psb\Configuration::getDefaultConfiguration();
+$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
 
 $config
     ->setUsername("{username}")
@@ -60,16 +74,20 @@ $config
 $authN = new \EConnect\Psb\Authentication($config);
 $authN->login('{clientId}', '{clientSecret}');
 
-$salesInvoiceApi = new EConnect\Psb\Api\SalesInvoiceApi(
+$apiInstance = new EConnect\Psb\Api\HookApi(
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
-    $config,
+    $config
 );
 
-$yourPartyId = "senderPartyId";
-$filePath = "./Ubl.xml";
-$receiverPartyId = null;
+try {
+    $result = $apiInstance->getHookConfigs();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HookApi->getHookConfigs: ', $e->getMessage(), PHP_EOL;
+}
 
-$salesInvoiceApi->sendSalesInvoice($yourPartyId, $filePath, $receiverPartyId);
 ```
 
 ## API Endpoints
@@ -90,21 +108,21 @@ Class | Method | HTTP request | Description
 *PeppolApi* | [**getDeliveryOptions**](docs/Api/PeppolApi.md#getdeliveryoptions) | **GET** /api/v1/peppol/deliveryOption | Advanced recipient party lookup in Peppol.
 *PurchaseInvoiceApi* | [**deletePurchaseInvoice**](docs/Api/PurchaseInvoiceApi.md#deletepurchaseinvoice) | **DELETE** /api/v1/{partyId}/purchaseInvoice/{documentId} | Delete purchase invoice.
 *PurchaseInvoiceApi* | [**downloadPurchaseInvoice**](docs/Api/PurchaseInvoiceApi.md#downloadpurchaseinvoice) | **GET** /api/v1/{partyId}/purchaseInvoice/{documentId}/download | Download purchase invoice.
-*PurchaseInvoiceApi* | [**getPurchaseInvoiceStatuses**](docs/Api/PurchaseInvoiceApi.md#getpurchaseinvoicestatuses) | **GET** /api/v1/{partyId}/purchaseInvoice/{documentId}/status | Get purchase invoice statuses.
+*PurchaseInvoiceApi* | [**getPurchaseInvoiceStatuses**](docs/Api/PurchaseInvoiceApi.md#getpurchaseinvoicestatuses) | **GET** /api/v1/{partyId}/purchaseInvoice/{documentId}/status | Get purchase invoice statuses (FOR DEBUGGING ONLY).
 *PurchaseInvoiceApi* | [**queryRecipientPartyForInvoiceResponse**](docs/Api/PurchaseInvoiceApi.md#queryrecipientpartyforinvoiceresponse) | **POST** /api/v1/{partyId}/purchaseInvoice/queryRecipientParty | Lookup the recipient party (seller/supplier) for possible delivery.
 *PurchaseInvoiceApi* | [**recognizePurchaseInvoice**](docs/Api/PurchaseInvoiceApi.md#recognizepurchaseinvoice) | **POST** /api/v1/{partyId}/purchaseInvoice/recognize | Recognize purchase invoice.
 *PurchaseInvoiceApi* | [**sendInvoiceResponse**](docs/Api/PurchaseInvoiceApi.md#sendinvoiceresponse) | **POST** /api/v1/{partyId}/purchaseInvoice/{documentId}/response | Send invoice response to let the seller know the status of the received invoice.
-*PurchaseOrderApi* | [**apiV1PartyIdPurchaseOrderDocumentIdStatusGet**](docs/Api/PurchaseOrderApi.md#apiv1partyidpurchaseorderdocumentidstatusget) | **GET** /api/v1/{partyId}/purchaseOrder/{documentId}/status | Get purchase order statuses.
+*PurchaseOrderApi* | [**apiV1PartyIdPurchaseOrderDocumentIdStatusGet**](docs/Api/PurchaseOrderApi.md#apiv1partyidpurchaseorderdocumentidstatusget) | **GET** /api/v1/{partyId}/purchaseOrder/{documentId}/status | Get purchase order statuses (FOR DEBUGGING ONLY).
 *PurchaseOrderApi* | [**apiV1PartyIdPurchaseOrderQueryRecipientPartyPost**](docs/Api/PurchaseOrderApi.md#apiv1partyidpurchaseorderqueryrecipientpartypost) | **POST** /api/v1/{partyId}/purchaseOrder/queryRecipientParty | Lookup the recipient party (seller) for possible delivery.
 *PurchaseOrderApi* | [**sendOrderCancellation**](docs/Api/PurchaseOrderApi.md#sendordercancellation) | **POST** /api/v1/{partyId}/purchaseOrder/{documentId}/cancel | Send order cancellation to let the seller know the order is cancelled.
 *PurchaseOrderApi* | [**sendPurchaseOrder**](docs/Api/PurchaseOrderApi.md#sendpurchaseorder) | **POST** /api/v1/{partyId}/purchaseOrder/send | Send a purchase order.
-*SalesInvoiceApi* | [**getSalesInvoiceStatuses**](docs/Api/SalesInvoiceApi.md#getsalesinvoicestatuses) | **GET** /api/v1/{partyId}/salesInvoice/{documentId}/status | Get sales invoice statuses.
+*SalesInvoiceApi* | [**getSalesInvoiceStatuses**](docs/Api/SalesInvoiceApi.md#getsalesinvoicestatuses) | **GET** /api/v1/{partyId}/salesInvoice/{documentId}/status | Get sales invoice statuses (FOR DEBUGGING ONLY).
 *SalesInvoiceApi* | [**queryRecipientPartyForSalesInvoice**](docs/Api/SalesInvoiceApi.md#queryrecipientpartyforsalesinvoice) | **POST** /api/v1/{partyId}/salesInvoice/queryRecipientParty | Lookup the recipient party (buyer/customer) for possible delivery.
 *SalesInvoiceApi* | [**recognizeSalesInvoice**](docs/Api/SalesInvoiceApi.md#recognizesalesinvoice) | **POST** /api/v1/{partyId}/salesInvoice/recognize | Recognize sales invoice.
 *SalesInvoiceApi* | [**sendSalesInvoice**](docs/Api/SalesInvoiceApi.md#sendsalesinvoice) | **POST** /api/v1/{partyId}/salesInvoice/send | Send an invoice.
 *SalesOrderApi* | [**deleteSalesOrder**](docs/Api/SalesOrderApi.md#deletesalesorder) | **DELETE** /api/v1/{partyId}/salesOrder/{documentId} | Delete sales order.
 *SalesOrderApi* | [**downloadSalesOrder**](docs/Api/SalesOrderApi.md#downloadsalesorder) | **GET** /api/v1/{partyId}/salesOrder/{documentId}/download | Download sales order.
-*SalesOrderApi* | [**getSalesOrderStatuses**](docs/Api/SalesOrderApi.md#getsalesorderstatuses) | **GET** /api/v1/{partyId}/salesOrder/{documentId}/status | Get sales order statuses.
+*SalesOrderApi* | [**getSalesOrderStatuses**](docs/Api/SalesOrderApi.md#getsalesorderstatuses) | **GET** /api/v1/{partyId}/salesOrder/{documentId}/status | Get sales order statuses (FOR DEBUGGING ONLY).
 *SalesOrderApi* | [**queryRecipientPartyForOrderResponse**](docs/Api/SalesOrderApi.md#queryrecipientpartyfororderresponse) | **POST** /api/v1/{partyId}/salesOrder/queryRecipientParty | Lookup the recipient party (buyer/customer) for possible delivery.
 *SalesOrderApi* | [**sendOrderResponse**](docs/Api/SalesOrderApi.md#sendorderresponse) | **POST** /api/v1/{partyId}/salesOrder/{documentId}/response | Send order response to let the buyer know the status of the received order.
 *UserApi* | [**addOrUpdateUser**](docs/Api/UserApi.md#addorupdateuser) | **PUT** /api/v1/user | Add or update users.
@@ -133,6 +151,8 @@ Class | Method | HTTP request | Description
 - [Party](docs/Model/Party.md)
 - [PartyPagedResult](docs/Model/PartyPagedResult.md)
 - [PartyPermissions](docs/Model/PartyPermissions.md)
+- [PeppolMigrateConfig](docs/Model/PeppolMigrateConfig.md)
+- [PrepareToMigrateResponse](docs/Model/PrepareToMigrateResponse.md)
 - [ProcessId](docs/Model/ProcessId.md)
 - [TransportProtocol](docs/Model/TransportProtocol.md)
 - [User](docs/Model/User.md)
@@ -140,7 +160,6 @@ Class | Method | HTTP request | Description
 
 ## Authorization
 
-Authentication schemes defined for the API:
 ### Bearer
 
 - **Type**: `OAuth`
@@ -149,6 +168,7 @@ Authentication schemes defined for the API:
 - **Scopes**: 
     - **ap**: Procurement Service Bus API
     - **vpd**: Validated Party Service API
+
 
 ### Subscription-Key
 
@@ -175,5 +195,5 @@ techsupport@econnect.eu
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `1.0`
-    - Generator version: `7.10.0`
+    - Generator version: `7.12.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

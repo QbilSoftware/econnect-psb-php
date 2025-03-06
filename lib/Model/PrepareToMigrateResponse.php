@@ -1,7 +1,7 @@
 <?php
 
 /**
- * OrderCancellation
+ * PrepareToMigrateResponse
  *
  * PHP version 7.4
  *
@@ -34,7 +34,7 @@ use \ArrayAccess;
 use \EConnect\Psb\ObjectSerializer;
 
 /**
- * OrderCancellation Class Doc Comment
+ * PrepareToMigrateResponse Class Doc Comment
  *
  * @category Class
  * @package  EConnect\Psb
@@ -42,7 +42,7 @@ use \EConnect\Psb\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializable
+class PrepareToMigrateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'OrderCancellation';
+    protected static $openAPIModelName = 'PrepareToMigrateResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,7 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'cancellation_note' => 'string',
-        'note' => 'string'
+        'migration_key' => 'string'
     ];
 
     /**
@@ -71,8 +70,7 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'cancellation_note' => null,
-        'note' => null
+        'migration_key' => null
     ];
 
     /**
@@ -81,8 +79,7 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'cancellation_note' => true,
-        'note' => true
+        'migration_key' => true
     ];
 
     /**
@@ -171,8 +168,7 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'cancellation_note' => 'cancellationNote',
-        'note' => 'note'
+        'migration_key' => 'migrationKey'
     ];
 
     /**
@@ -181,8 +177,7 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'cancellation_note' => 'setCancellationNote',
-        'note' => 'setNote'
+        'migration_key' => 'setMigrationKey'
     ];
 
     /**
@@ -191,8 +186,7 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'cancellation_note' => 'getCancellationNote',
-        'note' => 'getNote'
+        'migration_key' => 'getMigrationKey'
     ];
 
     /**
@@ -252,8 +246,7 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('cancellation_note', $data ?? [], null);
-        $this->setIfExists('note', $data ?? [], null);
+        $this->setIfExists('migration_key', $data ?? [], null);
     }
 
     /**
@@ -299,69 +292,35 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets cancellation_note
+     * Gets migration_key
      *
      * @return string|null
      */
-    public function getCancellationNote()
+    public function getMigrationKey()
     {
-        return $this->container['cancellation_note'];
+        return $this->container['migration_key'];
     }
 
     /**
-     * Sets cancellation_note
+     * Sets migration_key
      *
-     * @param string|null $cancellation_note The general reason for cancellation of the referenced order.
+     * @param string|null $migration_key migration_key
      *
      * @return self
      */
-    public function setCancellationNote($cancellation_note)
+    public function setMigrationKey($migration_key)
     {
-        if (is_null($cancellation_note)) {
-            array_push($this->openAPINullablesSetToNull, 'cancellation_note');
+        if (is_null($migration_key)) {
+            array_push($this->openAPINullablesSetToNull, 'migration_key');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cancellation_note', $nullablesSetToNull, true);
+            $index = array_search('migration_key', $nullablesSetToNull, true);
             if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['cancellation_note'] = $cancellation_note;
-
-        return $this;
-    }
-
-    /**
-     * Gets note
-     *
-     * @return string|null
-     */
-    public function getNote()
-    {
-        return $this->container['note'];
-    }
-
-    /**
-     * Sets note
-     *
-     * @param string|null $note The note may give comments or instructions that apply to the whole order cancellation.
-     *
-     * @return self
-     */
-    public function setNote($note)
-    {
-        if (is_null($note)) {
-            array_push($this->openAPINullablesSetToNull, 'note');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('note', $nullablesSetToNull, true);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['note'] = $note;
+        $this->container['migration_key'] = $migration_key;
 
         return $this;
     }

@@ -1,11 +1,11 @@
 # EConnect\Psb\MeApi
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to http://localhost.
 
-| Method | HTTP request | Description |
-| ------------- | ------------- | ------------- |
-| [**getUser()**](MeApi.md#getUser) | **GET** /api/v1/me | Get user. |
-| [**getUserParty()**](MeApi.md#getUserParty) | **GET** /api/v1/me/party | Get parties. |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**getUser()**](MeApi.md#getUser) | **GET** /api/v1/me | Get user.
+[**getUserParty()**](MeApi.md#getUserParty) | **GET** /api/v1/me/party | Get parties.
 
 
 ## `getUser()`
@@ -35,8 +35,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\MeApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -97,8 +97,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\MeApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );

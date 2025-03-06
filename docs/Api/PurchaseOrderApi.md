@@ -1,13 +1,13 @@
 # EConnect\Psb\PurchaseOrderApi
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to http://localhost.
 
-| Method | HTTP request | Description |
-| ------------- | ------------- | ------------- |
-| [**apiV1PartyIdPurchaseOrderDocumentIdStatusGet()**](PurchaseOrderApi.md#apiV1PartyIdPurchaseOrderDocumentIdStatusGet) | **GET** /api/v1/{partyId}/purchaseOrder/{documentId}/status | Get purchase order statuses. |
-| [**apiV1PartyIdPurchaseOrderQueryRecipientPartyPost()**](PurchaseOrderApi.md#apiV1PartyIdPurchaseOrderQueryRecipientPartyPost) | **POST** /api/v1/{partyId}/purchaseOrder/queryRecipientParty | Lookup the recipient party (seller) for possible delivery. |
-| [**sendOrderCancellation()**](PurchaseOrderApi.md#sendOrderCancellation) | **POST** /api/v1/{partyId}/purchaseOrder/{documentId}/cancel | Send order cancellation to let the seller know the order is cancelled. |
-| [**sendPurchaseOrder()**](PurchaseOrderApi.md#sendPurchaseOrder) | **POST** /api/v1/{partyId}/purchaseOrder/send | Send a purchase order. |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**apiV1PartyIdPurchaseOrderDocumentIdStatusGet()**](PurchaseOrderApi.md#apiV1PartyIdPurchaseOrderDocumentIdStatusGet) | **GET** /api/v1/{partyId}/purchaseOrder/{documentId}/status | Get purchase order statuses (FOR DEBUGGING ONLY).
+[**apiV1PartyIdPurchaseOrderQueryRecipientPartyPost()**](PurchaseOrderApi.md#apiV1PartyIdPurchaseOrderQueryRecipientPartyPost) | **POST** /api/v1/{partyId}/purchaseOrder/queryRecipientParty | Lookup the recipient party (seller) for possible delivery.
+[**sendOrderCancellation()**](PurchaseOrderApi.md#sendOrderCancellation) | **POST** /api/v1/{partyId}/purchaseOrder/{documentId}/cancel | Send order cancellation to let the seller know the order is cancelled.
+[**sendPurchaseOrder()**](PurchaseOrderApi.md#sendPurchaseOrder) | **POST** /api/v1/{partyId}/purchaseOrder/send | Send a purchase order.
 
 
 ## `apiV1PartyIdPurchaseOrderDocumentIdStatusGet()`
@@ -16,7 +16,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 apiV1PartyIdPurchaseOrderDocumentIdStatusGet($party_id, $document_id): \EConnect\Psb\Model\DocumentStatus[]
 ```
 
-Get purchase order statuses.
+Get purchase order statuses (FOR DEBUGGING ONLY).
 
 Get list of statuses of the purchase order.
 
@@ -37,8 +37,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\PurchaseOrderApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -55,10 +55,10 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| The sender (buyer) partyId. | |
-| **document_id** | **string**| The service bus documentId. | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| The sender (buyer) partyId. |
+ **document_id** | **string**| The service bus documentId. |
 
 ### Return type
 
@@ -104,8 +104,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\PurchaseOrderApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -124,12 +124,12 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| The sender (buyer) partyId. | |
-| **request_body** | [**string[]**](../Model/string.md)| All possible partyIds of the recipient party. | |
-| **preferred_document_type_id** | **string**| The source or preferred documentTypeId to match with and to determine the partyId format. | [optional] |
-| **document_family** | [**\EConnect\Psb\Model\OrderDocumentFamily**](../Model/.md)| Document family | [optional] |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| The sender (buyer) partyId. |
+ **request_body** | [**string[]**](../Model/string.md)| All possible partyIds of the recipient party. |
+ **preferred_document_type_id** | **string**| The source or preferred documentTypeId to match with and to determine the partyId format. | [optional]
+ **document_family** | [**\EConnect\Psb\Model\OrderDocumentFamily**](../Model/.md)| Document family | [optional]
 
 ### Return type
 
@@ -175,8 +175,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\PurchaseOrderApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -194,11 +194,11 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| Your partyId (buyer). | |
-| **document_id** | **string**| DocumentId that the cancellation is about. | |
-| **order_cancellation** | [**\EConnect\Psb\Model\OrderCancellation**](../Model/OrderCancellation.md)| Order cancellation message. | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| Your partyId (buyer). |
+ **document_id** | **string**| DocumentId that the cancellation is about. |
+ **order_cancellation** | [**\EConnect\Psb\Model\OrderCancellation**](../Model/OrderCancellation.md)| Order cancellation message. |
 
 ### Return type
 
@@ -244,8 +244,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\PurchaseOrderApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -264,12 +264,12 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| The sender (buyer) partyId. | |
-| **file** | **\SplFileObject****\SplFileObject**| Multipart file upload. | |
-| **receiver_id** | **string**| An optional receiver partyId to enforce delivery to a specific endpoint. The receiverId will be injected into the document. | [optional] |
-| **channel** | **string**| An optional parameter to enforce the use of a delivery channel. | [optional] |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| The sender (buyer) partyId. |
+ **file** | **\SplFileObject****\SplFileObject**| Multipart file upload. |
+ **receiver_id** | **string**| An optional receiver partyId to enforce delivery to a specific endpoint. The receiverId will be injected into the document. | [optional]
+ **channel** | **string**| An optional parameter to enforce the use of a delivery channel. | [optional]
 
 ### Return type
 

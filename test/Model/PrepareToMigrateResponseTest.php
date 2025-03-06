@@ -1,6 +1,6 @@
 <?php
 /**
- * PartyPermissionsTest
+ * PrepareToMigrateResponseTest
  *
  * PHP version 7.4
  *
@@ -32,15 +32,15 @@ namespace EConnect\Psb\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * PartyPermissionsTest Class Doc Comment
+ * PrepareToMigrateResponseTest Class Doc Comment
  *
  * @category    Class
- * @description PartyPermissions
+ * @description PrepareToMigrateResponse
  * @package     EConnect\Psb
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class PartyPermissionsTest extends TestCase
+class PrepareToMigrateResponseTest extends TestCase
 {
 
     /**
@@ -72,54 +72,18 @@ class PartyPermissionsTest extends TestCase
     }
 
     /**
-     * Test "PartyPermissions"
+     * Test "PrepareToMigrateResponse"
      */
-    public function testPartyPermissions()
+    public function testPrepareToMigrateResponse()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "can_send_document"
+     * Test attribute "migration_key"
      */
-    public function testPropertyCanSendDocument()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "can_receive_document"
-     */
-    public function testPropertyCanReceiveDocument()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "can_remove_document"
-     */
-    public function testPropertyCanRemoveDocument()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "can_manage_hook"
-     */
-    public function testPropertyCanManageHook()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "can_change_document_status"
-     */
-    public function testPropertyCanChangeDocumentStatus()
+    public function testPropertyMigrationKey()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

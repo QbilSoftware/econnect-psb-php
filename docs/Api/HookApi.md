@@ -1,16 +1,16 @@
 # EConnect\Psb\HookApi
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to http://localhost.
 
-| Method | HTTP request | Description |
-| ------------- | ------------- | ------------- |
-| [**getHookConfigs()**](HookApi.md#getHookConfigs) | **GET** /api/v1/hook | Get registered environment hooks. |
-| [**getHooks()**](HookApi.md#getHooks) | **GET** /api/v1/{partyId}/hook | Get registered hooks. |
-| [**removeHookConfig()**](HookApi.md#removeHookConfig) | **DELETE** /api/v1/hook/{hookId} | Delete default hook. |
-| [**sendHookPing()**](HookApi.md#sendHookPing) | **GET** /api/v1/{partyId}/hook/ping | Send ping to hook(s). |
-| [**setHookConfig()**](HookApi.md#setHookConfig) | **PUT** /api/v1/hook | Add or update environment hook. |
-| [**subscribe()**](HookApi.md#subscribe) | **PUT** /api/v1/{partyId}/hook | Add or update hook. |
-| [**unSubscribe()**](HookApi.md#unSubscribe) | **DELETE** /api/v1/{partyId}/hook/{hookId} | Delete hook. |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**getHookConfigs()**](HookApi.md#getHookConfigs) | **GET** /api/v1/hook | Get registered environment hooks.
+[**getHooks()**](HookApi.md#getHooks) | **GET** /api/v1/{partyId}/hook | Get registered hooks.
+[**removeHookConfig()**](HookApi.md#removeHookConfig) | **DELETE** /api/v1/hook/{hookId} | Delete default hook.
+[**sendHookPing()**](HookApi.md#sendHookPing) | **GET** /api/v1/{partyId}/hook/ping | Send ping to hook(s).
+[**setHookConfig()**](HookApi.md#setHookConfig) | **PUT** /api/v1/hook | Add or update environment hook.
+[**subscribe()**](HookApi.md#subscribe) | **PUT** /api/v1/{partyId}/hook | Add or update hook.
+[**unSubscribe()**](HookApi.md#unSubscribe) | **DELETE** /api/v1/{partyId}/hook/{hookId} | Delete hook.
 
 
 ## `getHookConfigs()`
@@ -40,8 +40,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\HookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -102,8 +102,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\HookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -119,9 +119,9 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| The partyId of the registered hooks. | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| The partyId of the registered hooks. |
 
 ### Return type
 
@@ -167,8 +167,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\HookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -183,9 +183,9 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **hook_id** | **string**| The hookId that is used as the id in the hook object. | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **hook_id** | **string**| The hookId that is used as the id in the hook object. |
 
 ### Return type
 
@@ -231,8 +231,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\HookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -248,9 +248,9 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| The partyId where the ping must be sent to. | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| The partyId where the ping must be sent to. |
 
 ### Return type
 
@@ -296,8 +296,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\HookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -313,9 +313,9 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **hook** | [**\EConnect\Psb\Model\Hook**](../Model/Hook.md)| The hook that will define the action and trigger. | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **hook** | [**\EConnect\Psb\Model\Hook**](../Model/Hook.md)| The hook that will define the action and trigger. |
 
 ### Return type
 
@@ -361,8 +361,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\HookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -379,10 +379,10 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| The partyId for the hook. | |
-| **hook** | [**\EConnect\Psb\Model\Hook**](../Model/Hook.md)| The hook that will define the action and trigger. | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| The partyId for the hook. |
+ **hook** | [**\EConnect\Psb\Model\Hook**](../Model/Hook.md)| The hook that will define the action and trigger. |
 
 ### Return type
 
@@ -428,8 +428,8 @@ $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setAccessToken(
 
 
 $apiInstance = new EConnect\Psb\Api\HookApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
     $config
 );
@@ -445,10 +445,10 @@ try {
 
 ### Parameters
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **party_id** | **string**| The partyId for the hook. | |
-| **hook_id** | **string**| The hookId that is used as the id in the hook object. | |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **party_id** | **string**| The partyId for the hook. |
+ **hook_id** | **string**| The hookId that is used as the id in the hook object. |
 
 ### Return type
 

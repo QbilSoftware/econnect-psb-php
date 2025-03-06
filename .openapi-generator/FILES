@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .php-cs-fixer.dist.php
 .travis.yml
 README.md
@@ -29,6 +28,8 @@ docs/Model/OrderResponseCodes.md
 docs/Model/Party.md
 docs/Model/PartyPagedResult.md
 docs/Model/PartyPermissions.md
+docs/Model/PeppolMigrateConfig.md
+docs/Model/PrepareToMigrateResponse.md
 docs/Model/ProcessId.md
 docs/Model/TransportProtocol.md
 docs/Model/User.md
@@ -44,6 +45,7 @@ lib/Api/SalesOrderApi.php
 lib/Api/UserApi.php
 lib/ApiException.php
 lib/Configuration.php
+lib/DebugPlugin.php
 lib/HeaderSelector.php
 lib/Model/DeliveryOption.php
 lib/Model/Document.php
@@ -63,6 +65,8 @@ lib/Model/OrderResponseCodes.php
 lib/Model/Party.php
 lib/Model/PartyPagedResult.php
 lib/Model/PartyPermissions.php
+lib/Model/PeppolMigrateConfig.php
+lib/Model/PrepareToMigrateResponse.php
 lib/Model/ProcessId.php
 lib/Model/TransportProtocol.php
 lib/Model/User.php
@@ -94,6 +98,8 @@ test/Model/OrderResponseTest.php
 test/Model/PartyPagedResultTest.php
 test/Model/PartyPermissionsTest.php
 test/Model/PartyTest.php
+test/Model/PeppolMigrateConfigTest.php
+test/Model/PrepareToMigrateResponseTest.php
 test/Model/ProcessIdTest.php
 test/Model/TransportProtocolTest.php
 test/Model/UserPartyTest.php
