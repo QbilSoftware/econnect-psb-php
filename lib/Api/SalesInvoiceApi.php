@@ -1295,7 +1295,7 @@ class SalesInvoiceApi
 
         // query params
         if ($receiver_id !== null) {
-            if ('form' === 'form' && is_array($receiver_id)) {
+            if (is_array($receiver_id)) {
                 foreach ($receiver_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1305,7 +1305,7 @@ class SalesInvoiceApi
         }
         // query params
         if ($channel !== null) {
-            if ('form' === 'form' && is_array($channel)) {
+            if (is_array($channel)) {
                 foreach ($channel as $key => $value) {
                     $queryParams[$key] = $value;
                 }
