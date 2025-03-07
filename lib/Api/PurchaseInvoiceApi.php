@@ -375,6 +375,9 @@ class PurchaseInvoiceApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
 
+                // Manually set the `Content-Type` header
+                $headers['Content-Type'] = "multipart/form-data; boundary={$httpBody->getBoundary()}";
+
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
 
@@ -684,6 +687,9 @@ class PurchaseInvoiceApi
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
 
+                // Manually set the `Content-Type` header
+                $headers['Content-Type'] = "multipart/form-data; boundary={$httpBody->getBoundary()}";
+
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
 
@@ -973,6 +979,9 @@ class PurchaseInvoiceApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+
+                // Manually set the `Content-Type` header
+                $headers['Content-Type'] = "multipart/form-data; boundary={$httpBody->getBoundary()}";
 
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
@@ -1276,6 +1285,9 @@ class PurchaseInvoiceApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+
+                // Manually set the `Content-Type` header
+                $headers['Content-Type'] = "multipart/form-data; boundary={$httpBody->getBoundary()}";
 
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
@@ -1581,6 +1593,9 @@ class PurchaseInvoiceApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+
+                // Manually set the `Content-Type` header
+                $headers['Content-Type'] = "multipart/form-data; boundary={$httpBody->getBoundary()}";
 
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
@@ -1888,6 +1903,9 @@ class PurchaseInvoiceApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+
+                // Manually set the `Content-Type` header
+                $headers['Content-Type'] = "multipart/form-data; boundary={$httpBody->getBoundary()}";
 
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
