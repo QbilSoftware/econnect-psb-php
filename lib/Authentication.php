@@ -12,15 +12,13 @@ class Authentication
 {
     private ?\DateTimeImmutable $validUntil = null;
 
-    private ?string $token = null;
-
     public function __construct(
         private readonly Configuration $config,
         private readonly ClockInterface $clock = new NativeClock(),
     ) {
     }
 
-    public function login(string $clientId, string $clientSecret)
+    public function login(string $clientId, string $clientSecret): void
     {
         $identityUrl = str_replace("psb", "identity", $this->config->getHost());
 
@@ -33,7 +31,7 @@ class Authentication
         $oidc->addScope(["ap"]);
 
         if ($this->validUntil !== null && $this->validUntil < $this->clock->now()) {
-            return $this->token;
+            return;
         }
 
         $oidc->addAuthParam(['username' =>  $this->config->getUsername()]);
@@ -45,14 +43,9 @@ class Authentication
             throw new \Exception('PSB login failed.');
         }
 
-        $date = new \DateTime();
-        $date->add(new \DateInterval('PT' . $loginResponse->expires_in . 'S'));
+        $this->validUntil = $this->clock->now()
+            ->add(new \DateInterval("PT{$loginResponse->expires_in}S"));
 
-        $this->validTill = $date;
-        $this->token = $loginResponse->access_token;
-
-        $this->config->setAccessToken($this->token);
-
-        return $this->token;
+        $this->config->setAccessToken($loginResponse->access_token);
     }
 }
