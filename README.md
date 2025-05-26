@@ -71,13 +71,19 @@ $config
     ->setHost("https://psb.econnect.eu")
     ->setApiKey('Subscription-Key', '{subscription key}');
     
-$authN = new \EConnect\Psb\Authentication($config);
+$authN = new \EConnect\Psb\OidcAuthenticator(
+    \Http\Discovery\Psr18ClientDiscovery::find(),
+    \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory(),
+    \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory(),
+    new \Symfony\Component\Clock\NativeClock(),
+    $config,
+);
 $authN->login('{clientId}', '{clientSecret}');
 
 $apiInstance = new EConnect\Psb\Api\HookApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
-    new GuzzleHttp\Client(),
+    \Http\Discovery\Psr18ClientDiscovery::find(),
     $config
 );
 
