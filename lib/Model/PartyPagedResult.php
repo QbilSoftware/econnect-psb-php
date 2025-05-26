@@ -1,5 +1,4 @@
 <?php
-
 /**
  * PartyPagedResult
  *
@@ -321,8 +320,8 @@ class PartyPagedResult implements ModelInterface, ArrayAccess, \JsonSerializable
             array_push($this->openAPINullablesSetToNull, 'continuation_token');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('continuation_token', $nullablesSetToNull, true);
-            if ($index !== false) {
+            $index = array_search('continuation_token', $nullablesSetToNull);
+            if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -355,8 +354,8 @@ class PartyPagedResult implements ModelInterface, ArrayAccess, \JsonSerializable
             array_push($this->openAPINullablesSetToNull, 'items');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('items', $nullablesSetToNull, true);
-            if ($index !== false) {
+            $index = array_search('items', $nullablesSetToNull);
+            if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -429,7 +428,7 @@ class PartyPagedResult implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-        return ObjectSerializer::sanitizeForSerialization($this);
+       return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

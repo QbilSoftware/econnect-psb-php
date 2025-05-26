@@ -1,6 +1,6 @@
 <?php
 /**
- * Document
+ * PeppolConfig
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \EConnect\Psb\ObjectSerializer;
 
 /**
- * Document Class Doc Comment
+ * PeppolConfig Class Doc Comment
  *
  * @category Class
  * @package  EConnect\Psb
@@ -41,7 +41,7 @@ use \EConnect\Psb\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Document implements ModelInterface, ArrayAccess, \JsonSerializable
+class PeppolConfig implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Document';
+    protected static $openAPIModelName = 'PeppolConfig';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'capabilities' => 'array<string,\EConnect\Psb\Model\PeppolCapability>',
+        'business_card' => '\EConnect\Psb\Model\PeppolBusinessCard',
+        'created_on' => '\DateTime',
+        'changed_on' => '\DateTime'
     ];
 
     /**
@@ -69,7 +72,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'capabilities' => null,
+        'business_card' => null,
+        'created_on' => 'date-time',
+        'changed_on' => 'date-time'
     ];
 
     /**
@@ -78,7 +84,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => true
+        'capabilities' => true,
+        'business_card' => false,
+        'created_on' => true,
+        'changed_on' => true
     ];
 
     /**
@@ -167,7 +176,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'capabilities' => 'capabilities',
+        'business_card' => 'businessCard',
+        'created_on' => 'createdOn',
+        'changed_on' => 'changedOn'
     ];
 
     /**
@@ -176,7 +188,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'capabilities' => 'setCapabilities',
+        'business_card' => 'setBusinessCard',
+        'created_on' => 'setCreatedOn',
+        'changed_on' => 'setChangedOn'
     ];
 
     /**
@@ -185,7 +200,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'capabilities' => 'getCapabilities',
+        'business_card' => 'getBusinessCard',
+        'created_on' => 'getCreatedOn',
+        'changed_on' => 'getChangedOn'
     ];
 
     /**
@@ -245,7 +263,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('capabilities', $data ?? [], null);
+        $this->setIfExists('business_card', $data ?? [], null);
+        $this->setIfExists('created_on', $data ?? [], null);
+        $this->setIfExists('changed_on', $data ?? [], null);
     }
 
     /**
@@ -291,35 +312,130 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets capabilities
      *
-     * @return string|null
+     * @return array<string,\EConnect\Psb\Model\PeppolCapability>|null
      */
-    public function getId()
+    public function getCapabilities()
     {
-        return $this->container['id'];
+        return $this->container['capabilities'];
     }
 
     /**
-     * Sets id
+     * Sets capabilities
      *
-     * @param string|null $id id
+     * @param array<string,\EConnect\Psb\Model\PeppolCapability>|null $capabilities capabilities
      *
      * @return self
      */
-    public function setId($id)
+    public function setCapabilities($capabilities)
     {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
+        if (is_null($capabilities)) {
+            array_push($this->openAPINullablesSetToNull, 'capabilities');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
+            $index = array_search('capabilities', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['id'] = $id;
+        $this->container['capabilities'] = $capabilities;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_card
+     *
+     * @return \EConnect\Psb\Model\PeppolBusinessCard|null
+     */
+    public function getBusinessCard()
+    {
+        return $this->container['business_card'];
+    }
+
+    /**
+     * Sets business_card
+     *
+     * @param \EConnect\Psb\Model\PeppolBusinessCard|null $business_card business_card
+     *
+     * @return self
+     */
+    public function setBusinessCard($business_card)
+    {
+        if (is_null($business_card)) {
+            throw new \InvalidArgumentException('non-nullable business_card cannot be null');
+        }
+        $this->container['business_card'] = $business_card;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_on
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedOn()
+    {
+        return $this->container['created_on'];
+    }
+
+    /**
+     * Sets created_on
+     *
+     * @param \DateTime|null $created_on created_on
+     *
+     * @return self
+     */
+    public function setCreatedOn($created_on)
+    {
+        if (is_null($created_on)) {
+            array_push($this->openAPINullablesSetToNull, 'created_on');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_on', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['created_on'] = $created_on;
+
+        return $this;
+    }
+
+    /**
+     * Gets changed_on
+     *
+     * @return \DateTime|null
+     */
+    public function getChangedOn()
+    {
+        return $this->container['changed_on'];
+    }
+
+    /**
+     * Sets changed_on
+     *
+     * @param \DateTime|null $changed_on changed_on
+     *
+     * @return self
+     */
+    public function setChangedOn($changed_on)
+    {
+        if (is_null($changed_on)) {
+            array_push($this->openAPINullablesSetToNull, 'changed_on');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('changed_on', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['changed_on'] = $changed_on;
 
         return $this;
     }

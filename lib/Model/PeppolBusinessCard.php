@@ -1,6 +1,6 @@
 <?php
 /**
- * Document
+ * PeppolBusinessCard
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \EConnect\Psb\ObjectSerializer;
 
 /**
- * Document Class Doc Comment
+ * PeppolBusinessCard Class Doc Comment
  *
  * @category Class
  * @package  EConnect\Psb
@@ -41,7 +41,7 @@ use \EConnect\Psb\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Document implements ModelInterface, ArrayAccess, \JsonSerializable
+class PeppolBusinessCard implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Document';
+    protected static $openAPIModelName = 'PeppolBusinessCard';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'names' => '\EConnect\Psb\Model\BusinessCardProperty',
+        'address' => '\EConnect\Psb\Model\BusinessCardProperty',
+        'email_address' => '\EConnect\Psb\Model\BusinessCardProperty',
+        'state' => 'string'
     ];
 
     /**
@@ -69,7 +72,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'names' => null,
+        'address' => null,
+        'email_address' => null,
+        'state' => null
     ];
 
     /**
@@ -78,7 +84,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => true
+        'names' => false,
+        'address' => false,
+        'email_address' => false,
+        'state' => true
     ];
 
     /**
@@ -167,7 +176,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'names' => 'names',
+        'address' => 'address',
+        'email_address' => 'emailAddress',
+        'state' => 'state'
     ];
 
     /**
@@ -176,7 +188,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'names' => 'setNames',
+        'address' => 'setAddress',
+        'email_address' => 'setEmailAddress',
+        'state' => 'setState'
     ];
 
     /**
@@ -185,7 +200,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'names' => 'getNames',
+        'address' => 'getAddress',
+        'email_address' => 'getEmailAddress',
+        'state' => 'getState'
     ];
 
     /**
@@ -245,7 +263,10 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('names', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('email_address', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
     }
 
     /**
@@ -291,35 +312,116 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets names
      *
-     * @return string|null
+     * @return \EConnect\Psb\Model\BusinessCardProperty|null
      */
-    public function getId()
+    public function getNames()
     {
-        return $this->container['id'];
+        return $this->container['names'];
     }
 
     /**
-     * Sets id
+     * Sets names
      *
-     * @param string|null $id id
+     * @param \EConnect\Psb\Model\BusinessCardProperty|null $names names
      *
      * @return self
      */
-    public function setId($id)
+    public function setNames($names)
     {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
+        if (is_null($names)) {
+            throw new \InvalidArgumentException('non-nullable names cannot be null');
+        }
+        $this->container['names'] = $names;
+
+        return $this;
+    }
+
+    /**
+     * Gets address
+     *
+     * @return \EConnect\Psb\Model\BusinessCardProperty|null
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param \EConnect\Psb\Model\BusinessCardProperty|null $address address
+     *
+     * @return self
+     */
+    public function setAddress($address)
+    {
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
+        }
+        $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_address
+     *
+     * @return \EConnect\Psb\Model\BusinessCardProperty|null
+     */
+    public function getEmailAddress()
+    {
+        return $this->container['email_address'];
+    }
+
+    /**
+     * Sets email_address
+     *
+     * @param \EConnect\Psb\Model\BusinessCardProperty|null $email_address email_address
+     *
+     * @return self
+     */
+    public function setEmailAddress($email_address)
+    {
+        if (is_null($email_address)) {
+            throw new \InvalidArgumentException('non-nullable email_address cannot be null');
+        }
+        $this->container['email_address'] = $email_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets state
+     *
+     * @return string|null
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param string|null $state Enable or disable the business card.
+     *
+     * @return self
+     */
+    public function setState($state)
+    {
+        if (is_null($state)) {
+            array_push($this->openAPINullablesSetToNull, 'state');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
+            $index = array_search('state', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['id'] = $id;
+        $this->container['state'] = $state;
 
         return $this;
     }

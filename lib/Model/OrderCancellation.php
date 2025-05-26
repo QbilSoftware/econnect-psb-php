@@ -1,5 +1,4 @@
 <?php
-
 /**
  * OrderCancellation
  *
@@ -321,8 +320,8 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
             array_push($this->openAPINullablesSetToNull, 'cancellation_note');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cancellation_note', $nullablesSetToNull, true);
-            if ($index !== false) {
+            $index = array_search('cancellation_note', $nullablesSetToNull);
+            if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -355,8 +354,8 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
             array_push($this->openAPINullablesSetToNull, 'note');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('note', $nullablesSetToNull, true);
-            if ($index !== false) {
+            $index = array_search('note', $nullablesSetToNull);
+            if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -429,7 +428,7 @@ class OrderCancellation implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-        return ObjectSerializer::sanitizeForSerialization($this);
+       return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * OrderResponse
  *
@@ -351,8 +350,8 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             array_push($this->openAPINullablesSetToNull, 'note');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('note', $nullablesSetToNull, true);
-            if ($index !== false) {
+            $index = array_search('note', $nullablesSetToNull);
+            if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -425,7 +424,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-        return ObjectSerializer::sanitizeForSerialization($this);
+       return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

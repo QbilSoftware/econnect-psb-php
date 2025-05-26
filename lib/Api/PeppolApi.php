@@ -392,7 +392,7 @@ class PeppolApi
 
         // query params
         if ($party_ids !== null) {
-            if ('form' === 'form' && is_array($party_ids)) {
+            if (is_array($party_ids)) {
                 foreach ($party_ids as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -402,7 +402,7 @@ class PeppolApi
         }
         // query params
         if ($preferred_document_type_id !== null) {
-            if ('form' === 'form' && is_array($preferred_document_type_id)) {
+            if (is_array($preferred_document_type_id)) {
                 foreach ($preferred_document_type_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -412,7 +412,7 @@ class PeppolApi
         }
         // query params
         if ($document_type_ids !== null) {
-            if ('form' === 'form' && is_array($document_type_ids)) {
+            if(is_array($document_type_ids)) {
                 foreach ($document_type_ids as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -422,7 +422,7 @@ class PeppolApi
         }
         // query params
         if ($document_family !== null) {
-            if ('form' === 'form' && is_array($document_family)) {
+            if(is_array($document_family)) {
                 foreach ($document_family as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -432,7 +432,7 @@ class PeppolApi
         }
         // query params
         if ($is_credit !== null) {
-            if ('form' === 'form' && is_array($is_credit)) {
+            if (is_array($is_credit)) {
                 foreach ($is_credit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -442,6 +442,1246 @@ class PeppolApi
         }
 
 
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Subscription-Key');
+        if ($apiKey !== null) {
+            $headers['Subscription-Key'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+
+        $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
+
+        return $this->createRequest('GET', $uri, $headers, $httpBody);
+    }
+
+    /**
+     * Operation getPeppolConfig
+     *
+     * Get default Peppol configuration
+     *
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \EConnect\Psb\Model\PeppolPartyConfig
+     */
+    public function getPeppolConfig()
+    {
+        list($response) = $this->getPeppolConfigWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation getPeppolConfigWithHttpInfo
+     *
+     * Get default Peppol configuration
+     *
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array{0: \EConnect\Psb\Model\PeppolPartyConfig, 1: int, 2: string[]} array of \EConnect\Psb\Model\PeppolPartyConfig, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPeppolConfigWithHttpInfo()
+    {
+        $request = $this->getPeppolConfigRequest();
+
+        try {
+            try {
+                $response = $this->httpClient->sendRequest($request);
+            } catch (HttpException $e) {
+                $response = $e->getResponse();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $response->getStatusCode(),
+                        (string) $request->getUri()
+                    ),
+                    $request,
+                    $response,
+                    $e
+                );
+            } catch (ClientExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $request,
+                    null,
+                    $e
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch($statusCode) {
+                case 200:
+                    if ('\EConnect\Psb\Model\PeppolPartyConfig' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\PeppolPartyConfig', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\EConnect\Psb\Model\PeppolPartyConfig';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EConnect\Psb\Model\PeppolPartyConfig',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPeppolConfigAsync
+     *
+     * Get default Peppol configuration
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function getPeppolConfigAsync()
+    {
+        return $this->getPeppolConfigAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPeppolConfigAsyncWithHttpInfo
+     *
+     * Get default Peppol configuration
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function getPeppolConfigAsyncWithHttpInfo()
+    {
+        $returnType = '\EConnect\Psb\Model\PeppolPartyConfig';
+        $request = $this->getPeppolConfigRequest();
+
+        return $this->httpAsyncClient->sendAsyncRequest($request)
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function (HttpException $exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $exception->getRequest(),
+                        $exception->getResponse(),
+                        $exception
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPeppolConfig'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function getPeppolConfigRequest()
+    {
+
+        $resourcePath = '/api/v1/peppol/config';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = null;
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Subscription-Key');
+        if ($apiKey !== null) {
+            $headers['Subscription-Key'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+
+        $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
+
+        return $this->createRequest('GET', $uri, $headers, $httpBody);
+    }
+
+    /**
+     * Operation getPeppolParties
+     *
+     * Get your Peppol participants
+     *
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \EConnect\Psb\Model\PartyPagedResult
+     */
+    public function getPeppolParties()
+    {
+        list($response) = $this->getPeppolPartiesWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation getPeppolPartiesWithHttpInfo
+     *
+     * Get your Peppol participants
+     *
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array{0: \EConnect\Psb\Model\PartyPagedResult, 1: int, 2: string[]}
+     */
+    public function getPeppolPartiesWithHttpInfo()
+    {
+        $request = $this->getPeppolPartiesRequest();
+
+        try {
+            try {
+                $response = $this->httpClient->sendRequest($request);
+            } catch (HttpException $e) {
+                $response = $e->getResponse();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $response->getStatusCode(),
+                        (string) $request->getUri()
+                    ),
+                    $request,
+                    $response,
+                    $e
+                );
+            } catch (ClientExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $request,
+                    null,
+                    $e
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch($statusCode) {
+                case 200:
+                    if ('\EConnect\Psb\Model\PartyPagedResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\PartyPagedResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\EConnect\Psb\Model\PartyPagedResult';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EConnect\Psb\Model\PartyPagedResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPeppolPartiesAsync
+     *
+     * Get your Peppol participants
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function getPeppolPartiesAsync()
+    {
+        return $this->getPeppolPartiesAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPeppolPartiesAsyncWithHttpInfo
+     *
+     * Get your Peppol participants
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function getPeppolPartiesAsyncWithHttpInfo()
+    {
+        $returnType = '\EConnect\Psb\Model\PartyPagedResult';
+        $request = $this->getPeppolPartiesRequest();
+
+        return $this->httpAsyncClient->sendAsyncRequest($request)
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function (HttpException $exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $exception->getRequest(),
+                        $exception->getResponse(),
+                        $exception
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPeppolParties'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function getPeppolPartiesRequest()
+    {
+
+        $resourcePath = '/api/v1/peppol/config/party';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = null;
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Subscription-Key');
+        if ($apiKey !== null) {
+            $headers['Subscription-Key'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+
+        $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
+
+        return $this->createRequest('GET', $uri, $headers, $httpBody);
+    }
+
+    /**
+     * Operation getPeppolPartyConfig
+     *
+     * Get participant Peppol configuration
+     *
+     * @param  string $party_id The partyId for which you want to get the Peppol config. (required)
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \EConnect\Psb\Model\PeppolPartyConfig
+     */
+    public function getPeppolPartyConfig($party_id)
+    {
+        list($response) = $this->getPeppolPartyConfigWithHttpInfo($party_id);
+        return $response;
+    }
+
+    /**
+     * Operation getPeppolPartyConfigWithHttpInfo
+     *
+     * Get participant Peppol configuration
+     *
+     * @param  string $party_id The partyId for which you want to get the Peppol config. (required)
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array{\EConnect\Psb\Model\PeppolPartyConfig, 1: int, 2: string[]}
+     */
+    public function getPeppolPartyConfigWithHttpInfo($party_id)
+    {
+        $request = $this->getPeppolPartyConfigRequest($party_id);
+
+        try {
+            try {
+                $response = $this->httpClient->sendRequest($request);
+            } catch (HttpException $e) {
+                $response = $e->getResponse();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $response->getStatusCode(),
+                        (string) $request->getUri()
+                    ),
+                    $request,
+                    $response,
+                    $e
+                );
+            } catch (ClientExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $request,
+                    null,
+                    $e
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch($statusCode) {
+                case 200:
+                    if ('\EConnect\Psb\Model\PeppolPartyConfig' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\PeppolPartyConfig', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\EConnect\Psb\Model\PeppolPartyConfig';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EConnect\Psb\Model\PeppolPartyConfig',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPeppolPartyConfigAsync
+     *
+     * Get participant Peppol configuration
+     *
+     * @param  string $party_id The partyId for which you want to get the Peppol config. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function getPeppolPartyConfigAsync($party_id)
+    {
+        return $this->getPeppolPartyConfigAsyncWithHttpInfo($party_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPeppolPartyConfigAsyncWithHttpInfo
+     *
+     * Get participant Peppol configuration
+     *
+     * @param  string $party_id The partyId for which you want to get the Peppol config. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function getPeppolPartyConfigAsyncWithHttpInfo($party_id)
+    {
+        $returnType = '\EConnect\Psb\Model\PeppolPartyConfig';
+        $request = $this->getPeppolPartyConfigRequest($party_id);
+
+        return $this->httpAsyncClient->sendAsyncRequest($request)
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function (HttpException $exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $exception->getRequest(),
+                        $exception->getResponse(),
+                        $exception
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPeppolPartyConfig'
+     *
+     * @param  string $party_id The partyId for which you want to get the Peppol config. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function getPeppolPartyConfigRequest($party_id)
+    {
+        // verify the required parameter 'party_id' is set
+        if ($party_id === null || (is_array($party_id) && count($party_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $party_id when calling getPeppolPartyConfig'
+            );
+        }
+
+        $resourcePath = '/api/v1/peppol/config/party/{partyId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = null;
+        $multipart = false;
+
+
+
+        // path params
+        if ($party_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'partyId' . '}',
+                ObjectSerializer::toPathValue($party_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Subscription-Key');
+        if ($apiKey !== null) {
+            $headers['Subscription-Key'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+
+        $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
+
+        return $this->createRequest('GET', $uri, $headers, $httpBody);
+    }
+
+    /**
+     * Operation removePeppolPartyConfig
+     *
+     * Un register (Remove) participant in Peppol
+     *
+     * @param  string $party_id The partyId which you want to remove from Peppol. (required)
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function removePeppolPartyConfig($party_id)
+    {
+        $this->removePeppolPartyConfigWithHttpInfo($party_id);
+    }
+
+    /**
+     * Operation removePeppolPartyConfigWithHttpInfo
+     *
+     * Un register (Remove) participant in Peppol
+     *
+     * @param  string $party_id The partyId which you want to remove from Peppol. (required)
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array{0: null, 1: int, 2: string[]}
+     */
+    public function removePeppolPartyConfigWithHttpInfo($party_id)
+    {
+        $request = $this->removePeppolPartyConfigRequest($party_id);
+
+        try {
+            try {
+                $response = $this->httpClient->sendRequest($request);
+            } catch (HttpException $e) {
+                $response = $e->getResponse();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $response->getStatusCode(),
+                        (string) $request->getUri()
+                    ),
+                    $request,
+                    $response,
+                    $e
+                );
+            } catch (ClientExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $request,
+                    null,
+                    $e
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removePeppolPartyConfigAsync
+     *
+     * Un register (Remove) participant in Peppol
+     *
+     * @param  string $party_id The partyId which you want to remove from Peppol. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function removePeppolPartyConfigAsync($party_id)
+    {
+        return $this->removePeppolPartyConfigAsyncWithHttpInfo($party_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removePeppolPartyConfigAsyncWithHttpInfo
+     *
+     * Un register (Remove) participant in Peppol
+     *
+     * @param  string $party_id The partyId which you want to remove from Peppol. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function removePeppolPartyConfigAsyncWithHttpInfo($party_id)
+    {
+        $returnType = '';
+        $request = $this->removePeppolPartyConfigRequest($party_id);
+
+        return $this->httpAsyncClient->sendAsyncRequest($request)
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function (HttpException $exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $exception->getRequest(),
+                        $exception->getResponse(),
+                        $exception
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removePeppolPartyConfig'
+     *
+     * @param  string $party_id The partyId which you want to remove from Peppol. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function removePeppolPartyConfigRequest($party_id)
+    {
+        // verify the required parameter 'party_id' is set
+        if ($party_id === null || (is_array($party_id) && count($party_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $party_id when calling removePeppolPartyConfig'
+            );
+        }
+        if (!preg_match("/[A-Za-z0-9-=:]+/", $party_id)) {
+            throw new \InvalidArgumentException("invalid value for \"party_id\" when calling PeppolApi.removePeppolPartyConfig, must conform to the pattern /[A-Za-z0-9-=:]+/.");
+        }
+
+
+        $resourcePath = '/api/v1/peppol/config/party/{partyId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = null;
+        $multipart = false;
+
+
+
+        // path params
+        if ($party_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'partyId' . '}',
+                ObjectSerializer::toPathValue($party_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Subscription-Key');
+        if ($apiKey !== null) {
+            $headers['Subscription-Key'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+
+        $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
+
+        return $this->createRequest('DELETE', $uri, $headers, $httpBody);
+    }
+
+    /**
+     * Operation requestPartyPrepareToMigrate
+     *
+     * Generates a migration key and registers it with the SML to enable participant transfer between SMPs
+     *
+     * @param  string $party_id The partyId for which you want to request a migration code. (required)
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \EConnect\Psb\Model\PrepareToMigrateResponse
+     */
+    public function requestPartyPrepareToMigrate($party_id)
+    {
+        list($response) = $this->requestPartyPrepareToMigrateWithHttpInfo($party_id);
+        return $response;
+    }
+
+    /**
+     * Operation requestPartyPrepareToMigrateWithHttpInfo
+     *
+     * Generates a migration key and registers it with the SML to enable participant transfer between SMPs
+     *
+     * @param  string $party_id The partyId for which you want to request a migration code. (required)
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array{\EConnect\Psb\Model\PrepareToMigrateResponse, 1: int, 2: string[]}
+     */
+    public function requestPartyPrepareToMigrateWithHttpInfo($party_id)
+    {
+        $request = $this->requestPartyPrepareToMigrateRequest($party_id);
+
+        try {
+            try {
+                $response = $this->httpClient->sendRequest($request);
+            } catch (HttpException $e) {
+                $response = $e->getResponse();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $response->getStatusCode(),
+                        (string) $request->getUri()
+                    ),
+                    $request,
+                    $response,
+                    $e
+                );
+            } catch (ClientExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $request,
+                    null,
+                    $e
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch($statusCode) {
+                case 200:
+                    if ('\EConnect\Psb\Model\PrepareToMigrateResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\PrepareToMigrateResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\EConnect\Psb\Model\PrepareToMigrateResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EConnect\Psb\Model\PrepareToMigrateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation requestPartyPrepareToMigrateAsync
+     *
+     * Generates a migration key and registers it with the SML to enable participant transfer between SMPs
+     *
+     * @param  string $party_id The partyId for which you want to request a migration code. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function requestPartyPrepareToMigrateAsync($party_id)
+    {
+        return $this->requestPartyPrepareToMigrateAsyncWithHttpInfo($party_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation requestPartyPrepareToMigrateAsyncWithHttpInfo
+     *
+     * Generates a migration key and registers it with the SML to enable participant transfer between SMPs
+     *
+     * @param  string $party_id The partyId for which you want to request a migration code. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function requestPartyPrepareToMigrateAsyncWithHttpInfo($party_id)
+    {
+        $returnType = '\EConnect\Psb\Model\PrepareToMigrateResponse';
+        $request = $this->requestPartyPrepareToMigrateRequest($party_id);
+
+        return $this->httpAsyncClient->sendAsyncRequest($request)
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function (HttpException $exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $exception->getRequest(),
+                        $exception->getResponse(),
+                        $exception
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'requestPartyPrepareToMigrate'
+     *
+     * @param  string $party_id The partyId for which you want to request a migration code. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function requestPartyPrepareToMigrateRequest($party_id)
+    {
+        // verify the required parameter 'party_id' is set
+        if ($party_id === null || (is_array($party_id) && count($party_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $party_id when calling requestPartyPrepareToMigrate'
+            );
+        }
+        if (!preg_match("/[A-Za-z0-9-=:]+/", $party_id)) {
+            throw new \InvalidArgumentException("invalid value for \"party_id\" when calling PeppolApi.requestPartyPrepareToMigrate, must conform to the pattern /[A-Za-z0-9-=:]+/.");
+        }
+
+
+        $resourcePath = '/api/v1/peppol/{partyId}/prepareToMigrate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = null;
+        $multipart = false;
+
+
+
+        // path params
+        if ($party_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'partyId' . '}',
+                ObjectSerializer::toPathValue($party_id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -504,6 +1744,539 @@ class PeppolApi
         $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
 
         return $this->createRequest('GET', $uri, $headers, $httpBody);
+    }
+
+    /**
+     * Operation setPeppolConfig
+     *
+     * Add or update default Peppol configuration
+     *
+     * @param  \EConnect\Psb\Model\PeppolConfig $peppol_config peppol_config (optional)
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \EConnect\Psb\Model\PeppolConfig
+     */
+    public function setPeppolConfig($peppol_config = null)
+    {
+        list($response) = $this->setPeppolConfigWithHttpInfo($peppol_config);
+        return $response;
+    }
+
+    /**
+     * Operation setPeppolConfigWithHttpInfo
+     *
+     * Add or update default Peppol configuration
+     *
+     * @param  \EConnect\Psb\Model\PeppolConfig $peppol_config (optional)
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array{0: \EConnect\Psb\Model\PeppolConfig, 1: int, 2: string[]}
+     */
+    public function setPeppolConfigWithHttpInfo($peppol_config = null)
+    {
+        $request = $this->setPeppolConfigRequest($peppol_config);
+
+        try {
+            try {
+                $response = $this->httpClient->sendRequest($request);
+            } catch (HttpException $e) {
+                $response = $e->getResponse();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $response->getStatusCode(),
+                        (string) $request->getUri()
+                    ),
+                    $request,
+                    $response,
+                    $e
+                );
+            } catch (ClientExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $request,
+                    null,
+                    $e
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch($statusCode) {
+                case 200:
+                    if ('\EConnect\Psb\Model\PeppolConfig' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\PeppolConfig', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\EConnect\Psb\Model\PeppolConfig';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EConnect\Psb\Model\PeppolConfig',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation setPeppolConfigAsync
+     *
+     * Add or update default Peppol configuration
+     *
+     * @param  \EConnect\Psb\Model\PeppolConfig $peppol_config (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function setPeppolConfigAsync($peppol_config = null)
+    {
+        return $this->setPeppolConfigAsyncWithHttpInfo($peppol_config)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation setPeppolConfigAsyncWithHttpInfo
+     *
+     * Add or update default Peppol configuration
+     *
+     * @param  \EConnect\Psb\Model\PeppolConfig $peppol_config (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function setPeppolConfigAsyncWithHttpInfo($peppol_config = null)
+    {
+        $returnType = '\EConnect\Psb\Model\PeppolConfig';
+        $request = $this->setPeppolConfigRequest($peppol_config);
+
+        return $this->httpAsyncClient->sendAsyncRequest($request)
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function (HttpException $exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $exception->getRequest(),
+                        $exception->getResponse(),
+                        $exception
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'setPeppolConfig'
+     *
+     * @param  \EConnect\Psb\Model\PeppolConfig $peppol_config (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function setPeppolConfigRequest($peppol_config = null)
+    {
+
+        $resourcePath = '/api/v1/peppol/config';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = null;
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            'application/json',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($peppol_config)) {
+            if ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($peppol_config));
+            } else {
+                $httpBody = $peppol_config;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Subscription-Key');
+        if ($apiKey !== null) {
+            $headers['Subscription-Key'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+
+        $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
+
+        return $this->createRequest('PUT', $uri, $headers, $httpBody);
+    }
+
+    /**
+     * Operation setPeppolPartyConfig
+     *
+     * Register or update participant in Peppol
+     *
+     * @param  string $party_id The partyId for which you want to update the Peppol config. (required)
+     * @param  \EConnect\Psb\Model\PeppolPartyConfig $peppol_party_config The config for the Peppol registration. (optional)
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \EConnect\Psb\Model\PeppolPartyConfig
+     */
+    public function setPeppolPartyConfig($party_id, $peppol_party_config = null)
+    {
+        list($response) = $this->setPeppolPartyConfigWithHttpInfo($party_id, $peppol_party_config);
+        return $response;
+    }
+
+    /**
+     * Operation setPeppolPartyConfigWithHttpInfo
+     *
+     * Register or update participant in Peppol
+     *
+     * @param  string $party_id The partyId for which you want to update the Peppol config. (required)
+     * @param  \EConnect\Psb\Model\PeppolPartyConfig $peppol_party_config The config for the Peppol registration. (optional)
+     *
+     * @throws \EConnect\Psb\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array{\EConnect\Psb\Model\PeppolPartyConfig, , 1: int, 2: string[]}
+     */
+    public function setPeppolPartyConfigWithHttpInfo($party_id, $peppol_party_config = null)
+    {
+        $request = $this->setPeppolPartyConfigRequest($party_id, $peppol_party_config);
+
+        try {
+            try {
+                $response = $this->httpClient->sendRequest($request);
+            } catch (HttpException $e) {
+                $response = $e->getResponse();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $response->getStatusCode(),
+                        (string) $request->getUri()
+                    ),
+                    $request,
+                    $response,
+                    $e
+                );
+            } catch (ClientExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $request,
+                    null,
+                    $e
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            switch($statusCode) {
+                case 200:
+                    if ('\EConnect\Psb\Model\PeppolPartyConfig' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EConnect\Psb\Model\PeppolPartyConfig', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\EConnect\Psb\Model\PeppolPartyConfig';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EConnect\Psb\Model\PeppolPartyConfig',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation setPeppolPartyConfigAsync
+     *
+     * Register or update participant in Peppol
+     *
+     * @param  string $party_id The partyId for which you want to update the Peppol config. (required)
+     * @param  \EConnect\Psb\Model\PeppolPartyConfig $peppol_party_config The config for the Peppol registration. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function setPeppolPartyConfigAsync($party_id, $peppol_party_config = null)
+    {
+        return $this->setPeppolPartyConfigAsyncWithHttpInfo($party_id, $peppol_party_config)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation setPeppolPartyConfigAsyncWithHttpInfo
+     *
+     * Register or update participant in Peppol
+     *
+     * @param  string $party_id The partyId for which you want to update the Peppol config. (required)
+     * @param  \EConnect\Psb\Model\PeppolPartyConfig $peppol_party_config The config for the Peppol registration. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function setPeppolPartyConfigAsyncWithHttpInfo($party_id, $peppol_party_config = null)
+    {
+        $returnType = '\EConnect\Psb\Model\PeppolPartyConfig';
+        $request = $this->setPeppolPartyConfigRequest($party_id, $peppol_party_config);
+
+        return $this->httpAsyncClient->sendAsyncRequest($request)
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function (HttpException $exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $exception->getRequest(),
+                        $exception->getResponse(),
+                        $exception
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'setPeppolPartyConfig'
+     *
+     * @param  string $party_id The partyId for which you want to update the Peppol config. (required)
+     * @param  \EConnect\Psb\Model\PeppolPartyConfig $peppol_party_config The config for the Peppol registration. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function setPeppolPartyConfigRequest($party_id, $peppol_party_config = null)
+    {
+        // verify the required parameter 'party_id' is set
+        if ($party_id === null || (is_array($party_id) && count($party_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $party_id when calling setPeppolPartyConfig'
+            );
+        }
+        if (!preg_match("/[A-Za-z0-9-=:]+/", $party_id)) {
+            throw new \InvalidArgumentException("invalid value for \"party_id\" when calling PeppolApi.setPeppolPartyConfig, must conform to the pattern /[A-Za-z0-9-=:]+/.");
+        }
+
+
+        $resourcePath = '/api/v1/peppol/config/party/{partyId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = null;
+        $multipart = false;
+
+
+
+        // path params
+        if ($party_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'partyId' . '}',
+                ObjectSerializer::toPathValue($party_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            'application/json',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($peppol_party_config)) {
+            if ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($peppol_party_config));
+            } else {
+                $httpBody = $peppol_party_config;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Subscription-Key');
+        if ($apiKey !== null) {
+            $headers['Subscription-Key'] = $apiKey;
+        }
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+
+        $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
+
+        return $this->createRequest('PUT', $uri, $headers, $httpBody);
     }
 
 

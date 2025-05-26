@@ -1,6 +1,6 @@
 <?php
 /**
- * Document
+ * BusinessCardProperty
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \EConnect\Psb\ObjectSerializer;
 
 /**
- * Document Class Doc Comment
+ * BusinessCardProperty Class Doc Comment
  *
  * @category Class
  * @package  EConnect\Psb
@@ -41,7 +41,7 @@ use \EConnect\Psb\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Document implements ModelInterface, ArrayAccess, \JsonSerializable
+class BusinessCardProperty implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Document';
+    protected static $openAPIModelName = 'BusinessCardProperty';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,9 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'state' => 'string',
+        'value' => 'string',
+        'description' => 'string'
     ];
 
     /**
@@ -69,7 +71,9 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'state' => null,
+        'value' => null,
+        'description' => null
     ];
 
     /**
@@ -78,7 +82,9 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => true
+        'state' => true,
+        'value' => true,
+        'description' => true
     ];
 
     /**
@@ -167,7 +173,9 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'state' => 'state',
+        'value' => 'value',
+        'description' => 'description'
     ];
 
     /**
@@ -176,7 +184,9 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'state' => 'setState',
+        'value' => 'setValue',
+        'description' => 'setDescription'
     ];
 
     /**
@@ -185,7 +195,9 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'state' => 'getState',
+        'value' => 'getValue',
+        'description' => 'getDescription'
     ];
 
     /**
@@ -245,7 +257,9 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
     }
 
     /**
@@ -291,35 +305,103 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets state
      *
      * @return string|null
      */
-    public function getId()
+    public function getState()
     {
-        return $this->container['id'];
+        return $this->container['state'];
     }
 
     /**
-     * Sets id
+     * Sets state
      *
-     * @param string|null $id id
+     * @param string|null $state state
      *
      * @return self
      */
-    public function setId($id)
+    public function setState($state)
     {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
+        if (is_null($state)) {
+            array_push($this->openAPINullablesSetToNull, 'state');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
+            $index = array_search('state', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['id'] = $id;
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string|null
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string|null $value value
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        if (is_null($value)) {
+            array_push($this->openAPINullablesSetToNull, 'value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('value', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['description'] = $description;
 
         return $this;
     }

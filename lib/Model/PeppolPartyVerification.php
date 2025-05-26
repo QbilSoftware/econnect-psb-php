@@ -1,6 +1,6 @@
 <?php
 /**
- * Document
+ * PeppolPartyVerification
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \EConnect\Psb\ObjectSerializer;
 
 /**
- * Document Class Doc Comment
+ * PeppolPartyVerification Class Doc Comment
  *
  * @category Class
  * @package  EConnect\Psb
@@ -41,7 +41,7 @@ use \EConnect\Psb\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Document implements ModelInterface, ArrayAccess, \JsonSerializable
+class PeppolPartyVerification implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Document';
+    protected static $openAPIModelName = 'PeppolPartyVerification';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'notes' => 'string',
+        'verified_on' => '\DateTime'
     ];
 
     /**
@@ -69,7 +70,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'notes' => null,
+        'verified_on' => 'date-time'
     ];
 
     /**
@@ -78,7 +80,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => true
+        'notes' => false,
+        'verified_on' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'notes' => 'notes',
+        'verified_on' => 'verifiedOn'
     ];
 
     /**
@@ -176,7 +180,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'notes' => 'setNotes',
+        'verified_on' => 'setVerifiedOn'
     ];
 
     /**
@@ -185,7 +190,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'notes' => 'getNotes',
+        'verified_on' => 'getVerifiedOn'
     ];
 
     /**
@@ -245,7 +251,8 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('notes', $data ?? [], null);
+        $this->setIfExists('verified_on', $data ?? [], null);
     }
 
     /**
@@ -275,6 +282,16 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['notes'] === null) {
+            $invalidProperties[] = "'notes' can't be null";
+        }
+        if ((mb_strlen($this->container['notes']) < 1)) {
+            $invalidProperties[] = "invalid value for 'notes', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['verified_on'] === null) {
+            $invalidProperties[] = "'verified_on' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -291,35 +308,60 @@ class Document implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets notes
      *
-     * @return string|null
+     * @return string
      */
-    public function getId()
+    public function getNotes()
     {
-        return $this->container['id'];
+        return $this->container['notes'];
     }
 
     /**
-     * Sets id
+     * Sets notes
      *
-     * @param string|null $id id
+     * @param string $notes notes
      *
      * @return self
      */
-    public function setId($id)
+    public function setNotes($notes)
     {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($notes)) {
+            throw new \InvalidArgumentException('non-nullable notes cannot be null');
         }
-        $this->container['id'] = $id;
+
+        if ((mb_strlen($notes) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $notes when calling PeppolPartyVerification., must be bigger than or equal to 1.');
+        }
+
+        $this->container['notes'] = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Gets verified_on
+     *
+     * @return \DateTime
+     */
+    public function getVerifiedOn()
+    {
+        return $this->container['verified_on'];
+    }
+
+    /**
+     * Sets verified_on
+     *
+     * @param \DateTime $verified_on verified_on
+     *
+     * @return self
+     */
+    public function setVerifiedOn($verified_on)
+    {
+        if (is_null($verified_on)) {
+            throw new \InvalidArgumentException('non-nullable verified_on cannot be null');
+        }
+        $this->container['verified_on'] = $verified_on;
 
         return $this;
     }

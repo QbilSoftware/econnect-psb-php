@@ -1,5 +1,4 @@
 <?php
-
 /**
  * PrepareToMigrateResponse
  *
@@ -314,8 +313,8 @@ class PrepareToMigrateResponse implements ModelInterface, ArrayAccess, \JsonSeri
             array_push($this->openAPINullablesSetToNull, 'migration_key');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('migration_key', $nullablesSetToNull, true);
-            if ($index !== false) {
+            $index = array_search('migration_key', $nullablesSetToNull);
+            if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -388,7 +387,7 @@ class PrepareToMigrateResponse implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-        return ObjectSerializer::sanitizeForSerialization($this);
+       return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

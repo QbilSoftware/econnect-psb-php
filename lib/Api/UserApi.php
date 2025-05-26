@@ -29,6 +29,7 @@
 
 namespace EConnect\Psb\Api;
 
+use EConnect\Psb\Model\PeppolConfig;
 use GuzzleHttp\Psr7\MultipartStream;
 use Http\Client\Common\Plugin\ErrorPlugin;
 use Http\Client\Common\Plugin\RedirectPlugin;
@@ -187,7 +188,7 @@ class UserApi
      */
     public function addOrUpdateUser($user = null)
     {
-        list($response) = $this->addOrUpdateUserWithHttpInfo($user);
+        [$response] = $this->addOrUpdateUserWithHttpInfo($user);
         return $response;
     }
 
@@ -446,7 +447,7 @@ class UserApi
      */
     public function addOrUpdateUserParty($name, $user_party)
     {
-        list($response) = $this->addOrUpdateUserPartyWithHttpInfo($name, $user_party);
+        [$response] = $this->addOrUpdateUserPartyWithHttpInfo($name, $user_party);
         return $response;
     }
 
@@ -1175,7 +1176,7 @@ class UserApi
      */
     public function getUserParties($name)
     {
-        list($response) = $this->getUserPartiesWithHttpInfo($name);
+        [$response] = $this->getUserPartiesWithHttpInfo($name);
         return $response;
     }
 
@@ -1440,7 +1441,7 @@ class UserApi
      */
     public function getUsers()
     {
-        list($response) = $this->getUsersWithHttpInfo();
+        [$response] = $this->getUsersWithHttpInfo();
         return $response;
     }
 
