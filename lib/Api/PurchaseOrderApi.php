@@ -449,10 +449,10 @@ class PurchaseOrderApi
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
+        $defaultHeaders = $this->config->getDefaultHeaders();
+		if ($this->config->getUserAgent()) {
+			$defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+		}
 
         $headers = array_merge(
             $defaultHeaders,
@@ -770,10 +770,10 @@ class PurchaseOrderApi
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
+        $defaultHeaders = $this->config->getDefaultHeaders();
+		if ($this->config->getUserAgent()) {
+			$defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+		}
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1080,10 +1080,10 @@ class PurchaseOrderApi
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
+        $defaultHeaders = $this->config->getDefaultHeaders();
+		if ($this->config->getUserAgent()) {
+			$defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+		}
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1407,10 +1407,10 @@ class PurchaseOrderApi
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
+        $defaultHeaders = $this->config->getDefaultHeaders();
+		if ($this->config->getUserAgent()) {
+			$defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+		}
 
         $headers = array_merge(
             $defaultHeaders,

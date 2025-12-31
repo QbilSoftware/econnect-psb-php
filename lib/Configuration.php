@@ -103,6 +103,13 @@ class Configuration
      * @var string
      */
     protected $userAgent = 'OpenAPI-Generator/1.0.0/PHP';
+	
+	/**
+	 * Default headers (custom headers) to apply to all requests.
+	 *
+	 * @var array<string,string>
+	 */
+	protected $defaultHeaders = [];
 
     /**
      * Debug switch (default set to false)
@@ -328,6 +335,41 @@ class Configuration
     {
         return $this->userAgent;
     }
+
+	/**
+	 * Gets default headers.
+	 * 
+	 * @return array<string,string>
+	 */
+	public function getDefaultHeaders(): array
+	{
+		return $this->defaultHeaders;
+	}
+
+	/**
+	 * Sets default headers.
+	 * 
+	 * @param array<string,string> $headers
+	 * @return $this
+	 */
+	public function setDefaultHeaders(array $headers)
+	{
+		$this->defaultHeaders = $headers;
+		return $this;
+	}
+
+	/**
+	 * Adds a default header.
+	 * 
+	 * @param string $name
+	 * @param string $value
+	 * @return $this
+	 */
+	public function addDefaultHeader(string $name, string $value)
+	{
+		$this->defaultHeaders[$name] = $value;
+		return $this;
+	}
 
     /**
      * Sets debug flag
