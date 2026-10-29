@@ -1,13 +1,15 @@
-# OpenAPIClient-php
+# eConnect PSB PHP SDK
 
-PHP SDK for econnect PSB (https://psb.econnect.eu/?urls.primaryName=V1)
+PHP SDK for the eConnect Procurement Service Bus (PSB) API (https://psb.econnect.eu/?urls.primaryName=V1)
 
 
 ## Installation & Usage
 
 ### Requirements
 
-PHP 8.2 and later.
+- PHP 8.2 or later
+- A [PSR-18](https://packagist.org/providers/psr/http-client-implementation) HTTP client with an [HTTPlug async](https://packagist.org/providers/php-http/async-client-implementation) implementation, such as Symfony HttpClient or Guzzle
+- Compatible with Symfony 6.4, 7.x and 8.x (Symfony 8 itself requires PHP 8.4 or later)
 
 ### Composer
 
@@ -22,23 +24,23 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
     }
   ],
   "require": {
-    "QbilSoftware/econnect-psb-php": "@dev-main"
+    "qbil-software/econnect-psb-php": "dev-main"
   }
 }
 ```
 
-Then run `composer install`
+Then run `composer install`.
 
-Your project is free to choose the http client of your choice
-Please require packages that will provide http client functionality:
-https://packagist.org/providers/psr/http-client-implementation
-https://packagist.org/providers/php-http/async-client-implementation
-https://packagist.org/providers/psr/http-factory-implementation
-
-As an example:
+Your project is free to choose the HTTP client of your choice. In a Symfony application, use Symfony HttpClient:
 
 ```
-composer require guzzlehttp/guzzle php-http/guzzle7-adapter http-interop/http-factory-guzzle
+composer require symfony/http-client guzzlehttp/promises
+```
+
+Or use Guzzle 7 with its HTTPlug adapter:
+
+```
+composer require guzzlehttp/guzzle php-http/guzzle7-adapter
 ```
 
 ### Manual Installation
@@ -47,7 +49,7 @@ Download the files and include `autoload.php`:
 
 ```php
 <?php
-require_once('/path/to/OpenAPIClient-php/vendor/autoload.php');
+require_once('/path/to/econnect-psb-php/vendor/autoload.php');
 ```
 
 ## Getting Started
@@ -58,47 +60,66 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-
-
-// Configure API key authorization: Subscription-Key
-$config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKey('Subscription-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = EConnect\Psb\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Subscription-Key', 'Bearer');
-
-$config
-    ->setUsername("{username}")
-    ->setPassword("{password}");
-    ->setHost("https://psb.econnect.eu")
+$config = (new EConnect\Psb\Configuration())
+    ->setHost('https://psb.econnect.eu')
+    ->setUsername('{username}')
+    ->setPassword('{password}')
     ->setApiKey('Subscription-Key', '{subscription key}');
-    
-$authN = new \EConnect\Psb\OidcAuthenticator(
-    \Http\Discovery\Psr18ClientDiscovery::find(),
-    \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory(),
-    \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory(),
-    new \Symfony\Component\Clock\NativeClock(),
+
+$authenticator = new EConnect\Psb\OidcAuthenticator(
+    Http\Discovery\Psr18ClientDiscovery::find(),
+    Http\Discovery\Psr17FactoryDiscovery::findRequestFactory(),
+    Http\Discovery\Psr17FactoryDiscovery::findStreamFactory(),
+    new Symfony\Component\Clock\NativeClock(),
     $config,
 );
-$authN->login('{clientId}', '{clientSecret}');
 
-$apiInstance = new EConnect\Psb\Api\HookApi(
-    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
-    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
-    \Http\Discovery\Psr18ClientDiscovery::find(),
-    $config
-);
+// Fetches an access token and stores it in $config. The token is cached and renewed
+// shortly before it expires, so it is cheap to call this before every batch of API calls.
+$authenticator->authenticate('{clientId}', '{clientSecret}');
+
+// The HTTP client is optional: when omitted, it is discovered with `Psr18ClientDiscovery`.
+$apiInstance = new EConnect\Psb\Api\HookApi(null, $config);
 
 try {
     $result = $apiInstance->getHookConfigs();
     print_r($result);
-} catch (Exception $e) {
+} catch (EConnect\Psb\ApiException $e) {
     echo 'Exception when calling HookApi->getHookConfigs: ', $e->getMessage(), PHP_EOL;
 }
-
 ```
+
+### Symfony
+
+With `symfony/framework-bundle` and `symfony/http-client` installed, register the SDK as services, for example in `config/services.yaml`:
+
+```yaml
+services:
+    EConnect\Psb\Configuration:
+        calls:
+            - setHost: ['%env(PSB_HOST)%']
+            - setUsername: ['%env(PSB_USERNAME)%']
+            - setPassword: ['%env(PSB_PASSWORD)%']
+            - setApiKey: ['Subscription-Key', '%env(PSB_SUBSCRIPTION_KEY)%']
+
+    EConnect\Psb\OidcAuthenticator:
+        arguments:
+            $httpClient: '@psr18.http_client'
+            $requestFactory: '@psr18.http_client'
+            $streamFactory: '@psr18.http_client'
+            $clock: '@clock'
+            $config: '@EConnect\Psb\Configuration'
+
+    EConnect\Psb\Api\:
+        resource: '%kernel.project_dir%/vendor/qbil-software/econnect-psb-php/lib/Api/'
+        autowire: true
+```
+
+The API classes then use Symfony HttpClient for both synchronous and asynchronous requests. Inject `OidcAuthenticator` and the API classes you need into your own services, and call `authenticate()` before using the APIs.
 
 ## API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to the configured host, e.g. *https://psb.econnect.eu*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -112,6 +133,13 @@ Class | Method | HTTP request | Description
 *MeApi* | [**getUser**](docs/Api/MeApi.md#getuser) | **GET** /api/v1/me | Get user.
 *MeApi* | [**getUserParty**](docs/Api/MeApi.md#getuserparty) | **GET** /api/v1/me/party | Get parties.
 *PeppolApi* | [**getDeliveryOptions**](docs/Api/PeppolApi.md#getdeliveryoptions) | **GET** /api/v1/peppol/deliveryOption | Advanced recipient party lookup in Peppol.
+*PeppolApi* | [**getPeppolConfig**](lib/Api/PeppolApi.php) | **GET** /api/v1/peppol/config | Get default Peppol configuration
+*PeppolApi* | [**getPeppolParties**](lib/Api/PeppolApi.php) | **GET** /api/v1/peppol/config/party | Get your Peppol participants
+*PeppolApi* | [**getPeppolPartyConfig**](lib/Api/PeppolApi.php) | **GET** /api/v1/peppol/config/party/{partyId} | Get participant Peppol configuration
+*PeppolApi* | [**removePeppolPartyConfig**](lib/Api/PeppolApi.php) | **DELETE** /api/v1/peppol/config/party/{partyId} | Un register (Remove) participant in Peppol
+*PeppolApi* | [**requestPartyPrepareToMigrate**](lib/Api/PeppolApi.php) | **GET** /api/v1/peppol/{partyId}/prepareToMigrate | Generates a migration key and registers it with the SML to enable participant transfer between SMPs
+*PeppolApi* | [**setPeppolConfig**](lib/Api/PeppolApi.php) | **PUT** /api/v1/peppol/config | Add or update default Peppol configuration
+*PeppolApi* | [**setPeppolPartyConfig**](lib/Api/PeppolApi.php) | **PUT** /api/v1/peppol/config/party/{partyId} | Register or update participant in Peppol
 *PurchaseInvoiceApi* | [**deletePurchaseInvoice**](docs/Api/PurchaseInvoiceApi.md#deletepurchaseinvoice) | **DELETE** /api/v1/{partyId}/purchaseInvoice/{documentId} | Delete purchase invoice.
 *PurchaseInvoiceApi* | [**downloadPurchaseInvoice**](docs/Api/PurchaseInvoiceApi.md#downloadpurchaseinvoice) | **GET** /api/v1/{partyId}/purchaseInvoice/{documentId}/download | Download purchase invoice.
 *PurchaseInvoiceApi* | [**getPurchaseInvoiceStatuses**](docs/Api/PurchaseInvoiceApi.md#getpurchaseinvoicestatuses) | **GET** /api/v1/{partyId}/purchaseInvoice/{documentId}/status | Get purchase invoice statuses (FOR DEBUGGING ONLY).
@@ -140,6 +168,7 @@ Class | Method | HTTP request | Description
 
 ## Models
 
+- [BusinessCardProperty](lib/Model/BusinessCardProperty.php)
 - [DeliveryOption](docs/Model/DeliveryOption.md)
 - [Document](docs/Model/Document.md)
 - [DocumentFamily](docs/Model/DocumentFamily.md)
@@ -157,7 +186,12 @@ Class | Method | HTTP request | Description
 - [Party](docs/Model/Party.md)
 - [PartyPagedResult](docs/Model/PartyPagedResult.md)
 - [PartyPermissions](docs/Model/PartyPermissions.md)
+- [PeppolBusinessCard](lib/Model/PeppolBusinessCard.php)
+- [PeppolCapability](lib/Model/PeppolCapability.php)
+- [PeppolConfig](lib/Model/PeppolConfig.php)
 - [PeppolMigrateConfig](docs/Model/PeppolMigrateConfig.md)
+- [PeppolPartyConfig](lib/Model/PeppolPartyConfig.php)
+- [PeppolPartyVerification](lib/Model/PeppolPartyVerification.php)
 - [PrepareToMigrateResponse](docs/Model/PrepareToMigrateResponse.md)
 - [ProcessId](docs/Model/ProcessId.md)
 - [TransportProtocol](docs/Model/TransportProtocol.md)
@@ -189,8 +223,20 @@ To run the tests, use:
 
 ```bash
 composer install
-vendor/bin/phpunit
+composer test
 ```
+
+The `unit` test suite in `test/Unit` covers authentication, (de)serialization and request building, including a run on top of Symfony HttpClient. The `generated` suite in `test/Api` and `test/Model` contains the placeholders created by OpenAPI Generator.
+
+## Regenerating the SDK
+
+Hand-maintained files are listed in `.openapi-generator-ignore` and are kept when regenerating. The generated code also carries the following patches, which have to be re-applied after regenerating:
+
+- `lib/Api/*.php`: `createRequest()` always builds the request through the PSR-17 factories, and multipart requests set `Content-Type: multipart/form-data; boundary=...` from the `MultipartStream`.
+- `lib/ObjectSerializer.php`: dates are detected with `\DateTimeInterface`, so `\DateTimeImmutable` values are serialized as well.
+- `lib/DebugPlugin.php`: failed requests are logged as `<METHOD path HTTP/version> code message`.
+
+`lib/functions.php` provides `GuzzleHttp\Psr7\try_fopen()`, which the generated file uploads call but `guzzlehttp/psr7` 2.0 and later no longer ship.
 
 ## Author
 

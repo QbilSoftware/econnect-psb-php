@@ -12,7 +12,9 @@ $finder = PhpCsFixer\Finder::create()
 ;
 
 $config = new PhpCsFixer\Config();
-return $config->setRules([
+return $config
+    ->setRiskyAllowed(true)
+    ->setRules([
         '@PSR12' => true,
         'phpdoc_order' => true,
         'array_syntax' => [ 'syntax' => 'short' ],
