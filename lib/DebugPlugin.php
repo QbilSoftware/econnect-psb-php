@@ -97,7 +97,7 @@ class DebugPlugin implements Plugin
         $protocol = $request->getProtocolVersion();
         $error = $exception->getMessage();
         $responseCode = $exception->getCode();
-        \fprintf($this->output, '<%s HTTP/%s> %s %s', $methodAndPath, $responseCode, $error, $protocol);
+        \fprintf($this->output, '<%s HTTP/%s> %s %s', $methodAndPath, $protocol, $responseCode, $error);
         \fwrite($this->output, "\n");
     }
 }
