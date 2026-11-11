@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: PHP ${{ matrix.php }} (${{ matrix.dependencies }} dependencies)
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # highest: Symfony 7.4 on PHP 8.2/8.3, Symfony 8 on PHP 8.4+
+        php: ['8.2', '8.3', '8.4', '8.5']
+        dependencies: [highest]
+        include:
+          # lowest: Symfony 6.4, PSR-7 v1.1, guzzlehttp/psr7 v2
+          - php: '8.2'
+            dependencies: lowest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - run: composer validate --strict --no-check-lock
+
+      - uses: ramsey/composer-install@v3
+        with:
+          dependency-versions: ${{ matrix.dependencies }}
+
+      - run: vendor/bin/phpunit

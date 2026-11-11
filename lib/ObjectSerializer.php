@@ -71,7 +71,7 @@ class ObjectSerializer
             return $data;
         }
 
-        if ($data instanceof \DateTime) {
+        if ($data instanceof \DateTimeInterface) {
             return ($format === 'date') ? $data->format('Y-m-d') : $data->format(self::$dateTimeFormat);
         }
 
@@ -243,7 +243,7 @@ class ObjectSerializer
         }
 
         # Handle DateTime objects in query
-        if ($openApiType === "\\DateTime" && $value instanceof \DateTime) {
+        if ($openApiType === "\\DateTime" && $value instanceof \DateTimeInterface) {
             return ["{$paramName}" => $value->format(self::$dateTimeFormat)];
         }
 
@@ -353,13 +353,13 @@ class ObjectSerializer
      * If it's a datetime object, format it in ISO8601
      * If it's a boolean, convert it to "true" or "false".
      *
-     * @param float|int|bool|\DateTime $value the value of the parameter
+     * @param float|int|bool|\DateTimeInterface $value the value of the parameter
      *
      * @return string the header string
      */
     public static function toString($value)
     {
-        if ($value instanceof \DateTime) { // datetime in ISO8601 format
+        if ($value instanceof \DateTimeInterface) { // datetime in ISO8601 format
             return $value->format(self::$dateTimeFormat);
         } elseif (is_bool($value)) {
             return $value ? 'true' : 'false';
